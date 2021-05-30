@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Recipes</h1>
+
+    {% for recipe in recipes %}
+    <strong>Recipe Name: </strong>{{ recipe.recipe_name.capitalize() }}<br>
+    <strong>Main Ingredient: </strong>{{ recipe.category.capitalize() }}<br>
+    <strong>Total Time: </strong>{{ recipe.total_time }} minutes<br>
+    <strong>Servings: </strong>{{ recipe.servings }} servings<br>
+    <h3>Ingredients:</h3>
+    <ul>
+        {% for ingredient in recipe.ingredients %}
+        <li>{{ ingredient }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Steps:</h3>
+    <ul>
+        {% for step in recipe.steps %}
+        <li>{{ step }}</li>
+        {% endfor %}
+    </ul>
+
+    <strong>Calories: </strong>{{ recipe.calories }} grams<br>
+    <strong>Fat: </strong> {{ recipe.macros_fat }} grams<br>
+    <strong>Protein: </strong> {{ recipe.macros_prot }} grams<br>
+    <strong>Cabs: </strong> {{ recipe.macros_carb }} grams
+    {% endfor %}
+
+</body>
+
+</html>

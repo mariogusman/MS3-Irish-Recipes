@@ -1,14 +1,103 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="row">
-    <div class="col s12 m8 offset-m2">
-        <div class="card-panel">
-            <h3 class="center-align light-blue-text text-darken-4">
-                {{ username }}'s Profile
-            </h3>
+<div class="container">
+    <div class="row align-items-center justify-content-md-center my-5">
+        <div class="col-lg-8">
+            <div class="card-panel">
+
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                    aria-selected="false">Profile</a>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="recipes-tab" data-bs-toggle="tab" data-bs-target="#recipes"
+                                    type="button" role="tab" aria-controls="recipes" aria-selected="false">Recipes</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content" id="myTabContent">
+                        <!-- User Profile and Social Media -->
+                        <div class="tab-pane fade show active py-5 px-5" id="profile" role="tabpanel"
+                            aria-labelledby="profile-tab">
+                            <h3>Profile</h3>
+                            <p>You can update your <strong>Instagram</strong> and <strong>Youtube</strong> pages
+                                below. <br> These will be shown on
+                                your recipes right under your name!</p>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" placeholder="{{ username }}"
+                                    aria-label="Username" aria-describedby="basic-addon1" readonly>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="fab fa-youtube"></i></span>
+                                <input type="text" class="form-control" placeholder="youtube.com/c/YourChannel"
+                                    aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="fab fa-instagram"></i></span>
+                                <input type="text" class="form-control" placeholder="@username" aria-label="Username"
+                                    aria-describedby="basic-addon1">
+                            </div>
+                            <button class="btn btn-primary">Update   <i class="fas fa-sync-alt"></i></button>
+
+                        </div>
+                        <!-- List of recipes by the user -->
+                        <div class="tab-pane fade py-5 px-5" id="recipes" role="tabpanel" aria-labelledby="recipes-tab">
+                            <h3>Recipes</h3>
+
+                            <table class="table table-hover py-3">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Recipe Name</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Chicken and Wild Mushroom Broth</th>
+                                        <td>Poultry</td>
+                                        <td>
+                                            <a href="#"><i class="fas fa-pen-square fa-2x mx-1"></i></a>
+                                            <a href="#"><i class="fas fa-trash fa-2x mx-1"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Beef Ribs in Stout</th>
+                                        <td>Beef</td>
+                                        <td>
+                                            <a href="#"><i class="fas fa-pen-square fa-2x mx-1"></i></a>
+                                            <a href="#"><i class="fas fa-trash fa-2x mx-1"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Mussels in Smoked Butter Sauce</th>
+                                        <td>Seafood</td>
+                                        <td>
+                                            <a href="#"><i class="fas fa-pen-square fa-2x mx-1"></i></a>
+                                            <a href="#"><i class="fas fa-trash fa-2x mx-1"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
         </div>
     </div>
 </div>
-
 {% endblock %}

@@ -18,6 +18,20 @@
     background-color: #c55e40 !important;
 }
 
+.fa-pen-square{
+    color: #2d8a67;
+}
+.fa-pen-square:hover{
+    color: #40C575;
+}
+
+.fa-trash{
+    color: #c55e40;
+}
+.fa-trash:hover{
+    color: #8a422d;
+}
+
 /* Other */
 #search {
     width: 100%;

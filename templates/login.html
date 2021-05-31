@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row gx-4 gx-lg-5 align-items-center justify-content-md-center my-5">
+        <div class="col-lg-6">
+
+            <h1>Login</h1>
+            <hr>
+
+            <form>
+                <div class="mb-3">
+                    <label for="username" name="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" aria-describedby="username">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <button type="submit" class="btn btn-primary btn-green">Login</button>
+                <span class="small muted">First time here? <a href=" {{ url_for('register') }}">Create an
+                        account</a>.</span>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

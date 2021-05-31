@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
+<main>
     <h1>Recipes</h1>
 
     {% for recipe in recipes %}
@@ -34,7 +27,6 @@
     <strong>Protein: </strong> {{ recipe.macros_prot }} grams<br>
     <strong>Cabs: </strong> {{ recipe.macros_carb }} grams
     {% endfor %}
+</main>
 
-</body>
-
-</html>
+{% endblock content %}

@@ -2,30 +2,30 @@
 {% block content %}
 
 <div class="container">
-    <div class="row align-items-center justify-content-md-center my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center justify-content-md-center my-5">
         <div class="col-lg-6">
 
 
             <h1>Login</h1>
             <hr>
 
-            <form>
+            <form method="POST" action="{{ url_for('login') }}">
                 <div class="mb-3">
                     <label for="username" name="username" class="form-label">Username</label>
-                    <input id="username" name="username" type="text" class="form-control" minlength="5" maxlength="15"
-                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <input type="text" class="form-control" id="username" name="username" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" aria-describedby="username">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input id="password" name="password" type="password" class="form-control" minlength="5"
-                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-primary btn-green">Login</button>
-                <span class="small muted">First time here? <a href=" {{ url_for('register') }}">Create an
-                        account</a>.</span>
-            </form>
-
+                <button type="submit" class="btn btn-primary btn-green">Submit</button>
+                <span class="small muted">First time here? <a href=" {{ url_for('register') }}">Join us</a>.</span>
         </div>
+        </form>
+
     </div>
+</div>
 </div>
 {% endblock content %}

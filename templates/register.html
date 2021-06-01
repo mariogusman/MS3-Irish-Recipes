@@ -4,27 +4,7 @@
 <div class="container">
     <div class="row gx-4 gx-lg-5 align-items-center justify-content-md-center my-5">
         <div class="col-lg-6">
-            <section>
-                <!-- flash messages -->
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                {% for message in messages %}
-                {% if message == "Oops... This username is already taken!" %}
-                <div class="alert alert-danger" role="alert">
-                    {{ message }}
-                </div>
-                {% elif message == "Registration Successful!" %}
-                <div class="alert alert-success" role="alert">
-                    {{ message }}
-                </div>
-                {% endif %}
-                {% endfor %}
-                {% endif %}
-                {% if existing_user %}
 
-                {% endif %}
-                {% endwith %}
-            </section>
 
             <h1>Register</h1>
             <hr>

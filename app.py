@@ -56,14 +56,17 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    Renders Login template and adds login functionality.
+    """
     if request.method == "POST":
-        # check if username exists in db
+        # Checks if username exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()}
         )
 
         if existing_user:
-            # ensure hashed password matches user input
+            # Ensures hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")
             ):
@@ -71,12 +74,12 @@ def login():
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
             else:
-                # invalid password match
+                # Flash message in case password is incorrect
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
 
         else:
-            # username doesn't exist
+            # Username does not exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
 
@@ -91,6 +94,14 @@ def profile(username):
     if session["user"]:
         return render_template("profile.html", username=username)
 
+    return redirect(url_for("login"))
+
+
+@app.route("/logout")
+def logout():
+    # Removes 'user' from 'session' Cookie
+    flash("You have been logged out")
+    session.pop("user")
     return redirect(url_for("login"))
 
 

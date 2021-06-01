@@ -12,11 +12,13 @@
             <form>
                 <div class="mb-3">
                     <label for="username" name="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" aria-describedby="username">
+                    <input id="username" name="username" type="text" class="form-control" minlength="5" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="password" class="form-label">Password</label>
+                    <input id="password" name="password" type="password" class="form-control" minlength="5"
+                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                 </div>
                 <button type="submit" class="btn btn-primary btn-green">Login</button>
                 <span class="small muted">First time here? <a href=" {{ url_for('register') }}">Create an

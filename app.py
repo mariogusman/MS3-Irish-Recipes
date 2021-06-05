@@ -104,6 +104,8 @@ def addrecipe():
     if session.get("user"):
         # If user is logged in
         if request.method == "POST":
+            # defines new_recipe using content from the forms
+            # uses datetime to get accurate time recipe created
             new_recipe = {
                 "title": request.form.get("recipe_title"),
                 "description": request.form.get("recipe_description"),
@@ -116,9 +118,12 @@ def addrecipe():
                 "date": datetime.datetime.utcnow(),
                 "url": request.form.get("recipe_title").replace(" ", "-").lower(),
             }
+            # after defining the new object, inserts in the recipes collection
             mongo.db.recipes.insert_one(new_recipe)
+            # alerts users that recipe was published
             flash("Recipe Published Successfully!")
-            return render_template("profile.html")
+            # redirects users to the profile page
+            return redirect(url_for("profile"))
 
         return render_template("add_recipe.html")
 

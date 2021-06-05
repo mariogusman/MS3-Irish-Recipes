@@ -71,6 +71,15 @@
         <div class="alert alert-success" role="alert">
             {{ message }}
         </div>
+        {% elif message == "Recipe Successfully Updated!" %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+        {% elif message == "Recipe Published Successfully!" %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+
         {% else %}
         <div class="alert alert-secondary" role="alert">
             {{ message }}

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap');
 
+
 /* Colors */
 body {
     background-color: rgb(250, 250, 250);
@@ -12,6 +13,14 @@ a:hover{
 }
 .main-green {
     color: #40C575 !important 
+}
+
+.form-control:focus{
+    color: #212529;
+    background-color: #fff;
+    border-color: #2d8a67;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(0 0 0 / 0%);
 }
 
 .btn-primary {
@@ -64,6 +73,9 @@ a:hover{
     border-bottom: 2px solid #2d8a67;
     background-color: whitesmoke;
 }
+select > .recipe-form {
+    color: #535353;
+}
 
 .step-counter {
     background-color: #565656;
@@ -89,6 +101,12 @@ a:hover{
     font-size: xx-large;
     font-weight: 600;
     color: #535353;
+}
+#newIngredientFields > li {
+    list-style-type: none;
+}
+#newStepsFields > li {
+    list-style-type: none;
 }
 /* Fonts */
 h1, h2, h3, h4, h5, h6 {

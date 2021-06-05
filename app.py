@@ -91,7 +91,9 @@ def profile(username):
     username = mongo.db.users.find_one({"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        # Retrieve recipes from db added by user
+        recipes = list(mongo.db.recipes.find({"author": username}).sort("date", -1))
+        return render_template("profile.html", username=username, recipes=recipes)
 
     return redirect(url_for("login"))
 
@@ -123,7 +125,7 @@ def addrecipe():
             # alerts users that recipe was published
             flash("Recipe Published Successfully!")
             # redirects users to the profile page
-            return redirect(url_for("profile"))
+            return redirect(url_for("profile", username=session["user"]))
 
         return render_template("add_recipe.html")
 

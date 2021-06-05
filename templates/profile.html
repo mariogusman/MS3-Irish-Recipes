@@ -28,9 +28,9 @@
                         <div class="tab-pane fade show active py-5 px-5" id="profile" role="tabpanel"
                             aria-labelledby="profile-tab">
                             <p class="display-6">Profile</p>
-                            <p>You can update your <strong>Instagram</strong> and <strong>Youtube</strong> pages
-                                below. <br> These will be shown on
-                                your recipes right under your name!</p>
+                            <p class="lead">You can update your <strong>Instagram</strong> and <strong>Youtube</strong>
+                                pages below. <br>
+                                They will be shown on your recipes right next to your name!</p>
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
@@ -54,42 +54,70 @@
                         <!-- List of recipes by the user Tab -->
                         <div class="tab-pane fade py-5 px-5" id="recipes" role="tabpanel" aria-labelledby="recipes-tab">
                             <p class="display-6">My Recipes</p>
+                            <p class="lead">Here you can View, Edit and Delete your recipes.</p>
 
-                            <table class="table table-hover py-3">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Recipe Name</th>
-                                        <th scope="col">Category</th>
-                                        <th scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Chicken and Wild Mushroom Broth</th>
-                                        <td>Poultry</td>
-                                        <td>
-                                            <a href="#"><i class="fas fa-pen-square fa-2x mx-1"></i></a>
-                                            <a href="#"><i class="fas fa-trash fa-2x mx-1"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Beef Ribs in Stout</th>
-                                        <td>Beef</td>
-                                        <td>
-                                            <a href="#"><i class="fas fa-pen-square fa-2x mx-1"></i></a>
-                                            <a href="#"><i class="fas fa-trash fa-2x mx-1"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Mussels in Smoked Butter Sauce</th>
-                                        <td>Seafood</td>
-                                        <td>
-                                            <a href="#"><i class="fas fa-pen-square fa-2x mx-1"></i></a>
-                                            <a href="#"><i class="fas fa-trash fa-2x mx-1"></i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+
+                            <!-- My Recipes Area -->
+                            <div class="row">
+                                <!-- Labels -->
+                                <div class="fw-bold fs-5 d-flex flex-row ">
+                                    <div class="col-7">Recipe Name</div>
+                                    <div class="col-3">Category</div>
+                                    <div class="col-2">Manage</div>
+                                </div>
+
+                                <hr class="mt-2">
+
+                                <!-- Recipes -->
+                                <ul>
+                                    <li class="d-flex flex-row">
+                                        <div class="col-7">
+                                            <p class="fw-bold">Gelo Seco Delicioso</p>
+                                        </div>
+                                        <div class="col-3">Gelo</div>
+                                        <div class="col-2 d-flex flex-row align-content-start">
+                                            <button class="btn g-0 m-0 p-0"><i
+                                                    class="fas fa-pen-square fa-2x mx-1"></i></button>
+                                            <button class="btn g-0 m-0 p-0"><i
+                                                    class="fas fa-trash fa-2x mx-1"></i></button>
+                                        </div>
+                                    </li>
+
+                                    {% if recipes %}
+                                    {% for recipe in recipes %}
+                                    <li class="d-flex flex-row">
+                                        <div class="col-7">
+                                            <p class="fw-bold">{{ recipe.title.title() }}</p>
+                                        </div>
+                                        <div class="col-3">{{ recipe.category.title().replace("_", " & ") }}</div>
+                                        <div class="col-2 d-flex flex-row align-content-start">
+                                            <!-- Edit button -->
+                                            <button class="btn g-0 m-0 p-0">
+                                                <i class="fas fa-pen-square fa-2x mx-1"></i>
+                                            </button>
+                                            <!-- Delete button -->
+                                            <button class="btn g-0 m-0 p-0">
+                                                <i class="fas fa-trash fa-2x mx-1"></i>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
                         </div>
                     </div>
 

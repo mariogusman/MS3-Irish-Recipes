@@ -30,8 +30,8 @@
 
                                 <!-- Category -->
                                 <select class="form-select form-select-sm recipe-form"
-                                    aria-label=".form-select-sm example" name="recipe_category">
-                                    <option selected disabled>Select a Category</option>
+                                    aria-label=".form-select-sm example" name="recipe_category" required>
+                                    <option disabled selected value="">Recipe Category</option>
                                     <option value="eggs_dairy">Eggs and Dairy</option>
                                     <option value="vegetables">Vegetables</option>
                                     <option value="shellfish">Shellfish</option>
@@ -161,7 +161,7 @@
                         <!-- Card footer - Submit button -->
                         <hr class="mt-5">
                         <div class="d-flex flex-row justify-content-end pe-3">
-                            <button class="btn btn-success btn-lg">Publish!</button>
+                            <button class="btn btn-success btn-lg" type="submit">Save Changes!</button>
                         </div>
 
                     </div>

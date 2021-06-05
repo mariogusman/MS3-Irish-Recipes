@@ -118,12 +118,11 @@
                             <div class="col-md-7 ">
                                 <p class="display-6 text-center mt-3">Steps</p>
                                 <hr>
-                                <ul class="ps-0 ms-0" id="newStepsFields">
+                                <ol class="ps-4 ms-0" id="newStepsFields">
                                     <!-- First Step -->
-                                    <li>
-                                        <div class="row" id="stepGroup">
+                                    <li id="stepGroup">
+                                        <div class="row">
                                             <div class="col d-flex flex-row text-center">
-                                                <p class="fw-bold step-counter text-light align-self-center">1</p>
                                                 <input class="form-control recipe-form ms-1" name="steps" type="text"
                                                     placeholder="First Step" autocomplete="Off" autocapitalize="words"
                                                     minlength="3" maxlenght="20" required>
@@ -132,7 +131,7 @@
                                     </li>
 
                                     <!-- Additional Steps Here -->
-                                </ul>
+                                </ol>
 
                                 <!-- Button to Add more Steps -->
                                 <button type="button" id="newStep" class="btn btn-outline-success btn-sm mt-3">

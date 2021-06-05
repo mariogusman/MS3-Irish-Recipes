@@ -1,8 +1,8 @@
 // add ingredients
 $(document).on("click", "#newIngredient", function () {
     var newIngredientInput = '';
-    newIngredientInput += '<li>';
-    newIngredientInput += '<div class="row" id="ingredientGroup">';
+    newIngredientInput += '<li id="ingredientGroup">';
+    newIngredientInput += '<div class="row">';
     newIngredientInput += '<div class="col d-flex flex-row text-center">';
     newIngredientInput += '<input class="form-control recipe-form" name="ingredients" type="text" placeholder="Next Ingredient" minlength="3" maxlenght="20" required>';
     newIngredientInput += '<button class="btn remove-input" id="removeingredientGroup" type="button">';
@@ -18,10 +18,9 @@ var steps = 1;
 $(document).on("click", "#newStep", function () {
     steps++;
     var newStepInput = '';
-    newStepInput += '<li>';
-    newStepInput += '<div class="row" id="stepGroup">';
+    newStepInput += '<li id="stepGroup">';
+    newStepInput += '<div class="row">';
     newStepInput += '<div class="col d-flex flex-row text-center">';
-    newStepInput += '<p class="fw-bold step-counter text-light align-self-center">' + steps + '</p>';
     newStepInput += '<input class="form-control recipe-form ms-1" name="steps" type="text" placeholder="Next Step"  autocapitalize="words" minlength="3" maxlenght="20"  required>';
     newStepInput += '<button class="btn remove-input" id="removeStepGroup" type="button">';
     newStepInput += '<i class="fas fa-times align-self-center"></i>';

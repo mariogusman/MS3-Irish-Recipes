@@ -63,9 +63,9 @@
                             <div class="row">
                                 <!-- Labels -->
                                 <div class="fw-bold fs-5 d-flex flex-row ">
-                                    <div class="col-7">Recipe Name</div>
+                                    <div class="col-8">Recipe Name</div>
                                     <div class="col-3">Category</div>
-                                    <div class="col-2">Manage</div>
+                                    <div class="col-1">Edit</div>
                                 </div>
                                 <hr class="mt-2">
 
@@ -74,53 +74,25 @@
 
                                     {% if recipes %}
                                     {% for recipe in recipes %}
-                                    <li class="d-flex flex-row">
-                                        <div class="col-7">
-                                            <p class="fw-bold">{{ recipe.title.title() }}</p>
+                                    <li class="d-flex flex-row profile-recipe-table rounded">
+                                        <div class="col-8 ps-1">
+                                            <p class="fw-bold m-0 p-0 pt-1 g-0">{{ recipe.title.title() }}</p>
                                         </div>
-                                        <div class="col-3">{{ recipe.category.title().replace("_", " & ") }}</div>
-                                        <div class="col-2 d-flex flex-row align-content-start">
+                                        <div class="col-3">
+                                            <p class="m-0 p-0 pt-1 g-0">{{ recipe.category.title().replace("_", " & ")
+                                                }}</p>
+                                        </div>
+                                        <div class="col-1 d-flex flex-row align-content-start">
                                             <!-- Edit button -->
                                             <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
-                                                <button type="button" class="btn g-0 m-0 p-0">
+                                                <button type="button" class="btn g-0 m-0 p-0 pt-1">
                                                     <i class="fas fa-pen-square fa-2x mx-1"></i>
                                                 </button>
                                             </a>
-                                            <!-- Delete button -->
-
-                                            <button class="btn g-0 m-0 p-0" data-bs-toggle="modal"
-                                                data-bs-target="#deleteRecipeModal">
-                                                <i class="fas fa-trash fa-2x mx-1"></i>
-                                            </button>
                                         </div>
                                     </li>
 
-                                    <!-- Delete Recipe Modal -->
-                                    <div class="modal fade" id="deleteRecipeModal" tabindex="-1"
-                                        aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteRecipeModalLabel"> <i
-                                                            class="fas fa-exclamation-triangle"></i> Delete Recipe
-                                                    </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p class="lead">Are you sure you want to delete <strong>
-                                                            {{ recipe.title.title() }}</strong>?<br>
-                                                        This action <strong>cannot</strong> be reverted.
-                                                    </p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
 
                                     {% endfor %}
                                     {% endif %}

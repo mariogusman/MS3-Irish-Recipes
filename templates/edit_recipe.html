@@ -160,18 +160,55 @@
                         </div>
                         <!-- Card footer - Submit button -->
                         <hr class="mt-5">
-                        <div class="d-flex flex-row justify-content-end pe-3">
-                            <button class="btn btn-success btn-lg" type="submit">Save Changes!</button>
+                        <div class="d-flex flex-row justify-content-between pe-3 ps-3">
+                            <button class="btn btn-danger btn-lg" data-bs-toggle="modal"
+                                data-bs-target="#deleteRecipeModal">
+                                Delete
+                            </button>
+                            <button class="btn btn-success btn-lg" type="submit">
+                                Save Changes!
+                            </button>
                         </div>
 
                     </div>
                 </form>
+
+
+
             </div>
 
 
         </div>
     </div>
 </div>
+</div>
+
+<!-- Delete Recipe Modal -->
+<div class="modal fade" id="deleteRecipeModal" tabindex="-1" aria-labelledby="deleteRecipeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteRecipeModalLabel"> <i class="fas fa-exclamation-triangle"></i> Delete
+                    Recipe
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="lead">Hold on!<br>Are you sure you want to delete this
+                    recipe: <strong>{{ recipe.title.title() }}</strong>?<br>
+                    This action <strong>cannot</strong> be reverted.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                <!-- Confirm Delete -->
+                <a href=" {{ url_for('delete', recipe_id=recipe._id) }}">
+                    <button type="button" class="btn btn-danger">Delete</button></a>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock content %}

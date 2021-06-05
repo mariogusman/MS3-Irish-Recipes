@@ -89,6 +89,9 @@ select > .recipe-form {
 .remove-input:hover{
     color: darkred;
 }
+.profile-recipe-table:hover{
+    background-color: whitesmoke;
+}
 
 #recipeImageUpload{
     cursor:pointer;

@@ -1,5 +1,6 @@
 import os
 from types import MethodDescriptorType
+from dns.query import receive_udp
 from flask import Flask, flash, render_template, redirect, request, session, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -167,6 +168,13 @@ def edit_recipe(recipe_id):
         )
 
     return redirect(url_for("login"))
+
+
+@app.route("/delete/<recipe_id>")
+def delete(recipe_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    flash("Recipe Successfully Deleted!")
+    return redirect(url_for("profile", username=session["user"]))
 
 
 @app.route("/logout")

@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap');
 
 /* Colors */
+body {
+    background-color: rgb(250, 250, 250);
+}
+a {
+    color: #2d8a67 !important;    
+}
+a:hover{
+    color: #40C575 !important;
+}
 .main-green {
     color: #40C575 !important 
 }
@@ -32,23 +41,55 @@
     color: #8a422d;
 }
 
-/* Other */
-#search {
-    width: 100%;
-    height: 60px;
-    font-size: xx-large;
-    text-align: center;
-    font-family: 'Coustard', serif;
-    font-weight: 400;
-    border: 0px;
-    background: rgba(0, 0, 0, 0.5);
-    font-size: 27px;
-    padding: 5px 5px 5px 47px;
-    color: #fff;
-    position: relative;
-    border-radius: 0;
+.upload {
+    background-color: whitesmoke;
+    
+}
+.upload > * {
+    opacity: 0.3;
+    transition-duration: 0.3s;
+}
+.upload > *:hover {
+    opacity: 0.8;
+    transition-duration: 0.3s;
 }
 
+.recipe-form {
+    border: 0;
+}
+.recipe-form:hover {
+    background-color: whitesmoke;
+}
+.recipe-form:focus {
+    border-bottom: 2px solid #2d8a67;
+    background-color: whitesmoke;
+}
+
+.step-counter {
+    background-color: #565656;
+    border-radius: 50%;
+    min-width: 24px;
+    margin: 0px
+}
+.remove-input{
+    color: #565656;
+}
+.remove-input:hover{
+    color: darkred;
+}
+
+#recipeImageUpload{
+    cursor:pointer;
+}
+#recipeTitleInput::placeholder{
+    font-size: xx-large;
+    font-weight: 600;
+}
+#recipeTitleInput {
+    font-size: xx-large;
+    font-weight: 600;
+    color: #535353;
+}
 /* Fonts */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Coustard', serif;
@@ -62,10 +103,14 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 200%;
 }
 
+#sublogo {
+    color: #2d8a67;
+}
+
 /* Images */
 #index-dish {
     background-image: url("https://images.pexels.com/photos/1683549/pexels-photo-1683549.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     height: 350px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;}

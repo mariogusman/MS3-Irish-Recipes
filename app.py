@@ -1,4 +1,5 @@
 import os
+from types import MethodDescriptorType
 from flask import Flask, flash, render_template, redirect, request, session, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -92,6 +93,18 @@ def profile(username):
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
+
+
+@app.route("/addrecipe", methods=["GET", "POST"])
+def addrecipe():
+    """
+    Allows users to create recipes and push to DB
+    """
+    if session.get("user"):  # If user is logged in
+
+        return render_template("add_recipe.html")
+
+    return redirect(url_for("login"))  # Redirects to login if not logged
 
 
 @app.route("/logout")

@@ -132,6 +132,40 @@ def addrecipe():
     return redirect(url_for("login"))  # Redirects to login if not logged
 
 
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    """
+    Populates form with recipe old data and,
+    allows user to change the values and push an update to DB.
+    """
+    if session.get("user"):
+        # If user is logged in
+        if request.method == "POST":
+            # defines new_recipe using updated content from the forms
+            # date not included to maintain the original date for sorting purposes
+            new_recipe_update = {
+                "title": request.form.get("recipe_title"),
+                "description": request.form.get("recipe_description"),
+                "category": request.form.get("recipe_category"),
+                "time": request.form.get("recipe_time"),
+                "yeld": request.form.get("recipe_yeld"),
+                "ingredients": request.form.getlist("ingredients"),
+                "steps": request.form.getlist("steps"),
+                "author": session["user"],
+                "url": request.form.get("recipe_title").replace(" ", "-").lower(),
+            }
+            mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, new_recipe_update)
+            flash("Recipe Successfully Updated!")
+
+        recipe_record = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+        categories = mongo.db.categories.find().sort("category_name", 1)
+        return render_template(
+            "edit_recipe.html", recipe=recipe_record, categories=categories
+        )
+
+    return redirect(url_for("login"))
+
+
 @app.route("/logout")
 def logout():
     # Removes 'user' from 'session' Cookie

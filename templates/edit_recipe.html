@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% block content %}
+<script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+
+<div class="container">
+    <div class="row align-items-center justify-content-md-center my-5">
+        <div class="col-lg-8">
+            <div class="card-panel">
+                <p class="display-3 text-center">Edit Recipe</i></p>
+            </div>
+            <div class="card">
+                <form action="" method="post">
+                    <div class="card-body">
+                        <!-- Upper Row - Basic Info -->
+                        <div class="row m-3 g-0">
+                            <!-- Left Side - Title, Description, Servings, Time -->
+                            <div class="col-md-5 pe-2 align-self-end">
+                                <!-- Title -->
+
+                                <input class="form-control form-control-lg recipe-form ps-1" id="recipeTitleInput"
+                                    type="text" value="{{ recipe.title }}" placeholder="Recipe Name" name="recipe_title"
+                                    aria-label="Recipe Name" autocomplete="Off" autocapitalize="words" minlength="3"
+                                    maxlenght="25" required>
+
+                                <!-- Description -->
+                                <input class="form-control form-control-sm recipe-form" type="text"
+                                    value="{{ recipe.description }}" placeholder="Description of the Recipe"
+                                    name="recipe_description" aria-label="Description of the Recipe" autocomplete="Off"
+                                    autocapitalize="words" minlength="3" maxlenght="20" required>
+
+                                <!-- Category -->
+                                <select class="form-select form-select-sm recipe-form"
+                                    aria-label=".form-select-sm example" name="recipe_category">
+                                    <option selected disabled>Select a Category</option>
+                                    <option value="eggs_dairy">Eggs and Dairy</option>
+                                    <option value="vegetables">Vegetables</option>
+                                    <option value="shellfish">Shellfish</option>
+                                    <option value="fish">Fish</option>
+                                    <option value="poultry">Poultry</option>
+                                    <option value="boar_pork">Boar and Pork</option>
+                                    <option value="lamb_mutton_goat">Lamb, Mutton and Goat</option>
+                                    <option value="beef">Beef</option>
+                                    <option value="breads_scones_crackers">Breads, Scones and Crackers</option>
+                                    <option value="desserts">Cakes, Pastries and Desserts</option>
+                                </select>
+
+                                <!-- Time and Yeld -->
+                                <div class="row mt-2 g-0">
+                                    <!-- Left - Labels -->
+                                    <div class="col-2">
+                                        <p class="small fw-bold">Time: </p>
+                                        <p class="small fw-bold">Yeld: </p>
+                                    </div>
+
+                                    <!-- Right - Input -->
+                                    <div class="col">
+                                        <!-- Time -->
+                                        <input class="form-control form-control-sm recipe-form" name="recipe_time"
+                                            type="text" value="{{ recipe.time }}"
+                                            placeholder="How long (e.g. 30 minutes)"
+                                            aria-label="How long (e.g. 30 minutes)" autocomplete="Off"
+                                            autocapitalize="words" minlength="3" maxlenght="15" required>
+
+                                        <!-- Yeld -->
+                                        <input class="form-control form-control-sm recipe-form" name="recipe_yeld"
+                                            type="text" value="{{ recipe.yeld }}"
+                                            placeholder="Amount it makes (e.g. 2 Servings)"
+                                            aria-label="Amount it makes (e.g. 2 Servings)" autocomplete="Off"
+                                            autocapitalize="words" minlength="3" maxlenght="15" required>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Right Side - Picture  -->
+                            <div class="col-md-7 rounded upload d-flex justify-content-center" id="recipeImageUpload">
+                                <div>
+                                    <img src="{{ url_for('static', filename='images/foodupload.png') }}"
+                                        alt="Upload Your Recipe Photo">
+                                    <p class="text-center fw-bold">Upload a Picture</p>
+
+                                    <!-- Found on http://bit.ly/upload-file-jQuery -->
+                                    <input id="fileinput" type="file" name="fileinput" style="display:none" />
+                                </div>
+
+
+                            </div>
+                            <hr class="mt-3">
+
+                        </div>
+
+                        <!-- Lower Row - Ingredients and Steps -->
+                        <div class="row m-3">
+                            <!-- Ingredients -->
+                            <div class="col-md-5">
+                                <p class="display-6 small text-center mt-3">Ingredients</p>
+                                <hr>
+
+                                <ul class="ps-0 ms-0" id="newIngredientFields">
+                                    <!-- First Ingredient -->
+                                    {% for ingredient in recipe.ingredients %}
+                                    <li>
+                                        <div class="row" id="ingredientGroup">
+                                            <div class="col d-flex flex-row text-center">
+
+                                                <input class='form-control recipe-form' name="ingredients" type='text'
+                                                    value="{{ ingredient }}" placeholder='First Ingredient'
+                                                    autocomplete='Off' minlength='3' maxlenght='20' required>
+                                                <button class="btn remove-input" id="removeingredientGroup"
+                                                    type="button">
+                                                    <i class="fas fa-times align-self-center"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                    <!-- New Ingredients added below -->
+
+                                </ul>
+
+                                <!-- Button to Add Ingredients -->
+                                <button id="newIngredient" type="button"
+                                    class="btn btn-outline-success btn-sm mt-3 align-self-end">
+                                    <i class="fas fa-plus"></i> Add</button>
+                            </div>
+
+                            <!-- Steps -->
+                            <div class="col-md-7 ">
+                                <p class="display-6 text-center mt-3">Steps</p>
+                                <hr>
+                                <ol class="ps-4 ms-0" id="newStepsFields">
+                                    <!-- First Step -->
+                                    {% for step in recipe.steps %}
+
+                                    <li id="stepGroup">
+                                        <div class="row">
+                                            <div class="col d-flex flex-row text-center">
+                                                <!-- <p class="fw-bold step-counter text-light align-self-center">1</p> -->
+                                                <input class="form-control recipe-form ms-1" name="steps" type="text"
+                                                    value="{{ step }}" placeholder="First Step" autocomplete="Off"
+                                                    autocapitalize="words" minlength="3" maxlenght="20" required>
+                                                <button class="btn remove-input" id="removeStepGroup" type="button">
+                                                    <i class="fas fa-times align-self-center"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                    <!-- Additional Steps Here -->
+
+                                </ol>
+
+                                <!-- Button to Add more Steps -->
+                                <button type="button" id="newStep" class="btn btn-outline-success btn-sm mt-3">
+                                    <i class="fas fa-plus"></i> Add</button>
+
+
+                            </div>
+                        </div>
+                        <!-- Card footer - Submit button -->
+                        <hr class="mt-5">
+                        <div class="d-flex flex-row justify-content-end pe-3">
+                            <button class="btn btn-success btn-lg">Publish!</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock content %}

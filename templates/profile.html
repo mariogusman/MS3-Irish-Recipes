@@ -9,23 +9,24 @@
                 <div class="card">
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="profile-tab" data-bs-toggle="tab"
-                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
-                                    aria-selected="false">Profile</a>
+                                <a class="nav-link active" id="recipes-tab" data-bs-toggle="tab"
+                                    data-bs-target="#recipes" type="button" role="tab" aria-controls="recipes"
+                                    aria-selected="false">My Recipes</a>
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="recipes-tab" data-bs-toggle="tab" data-bs-target="#recipes"
-                                    type="button" role="tab" aria-controls="recipes" aria-selected="false">My
-                                    Recipes</a>
+                                <a class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                                    type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                    Profile</a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="tab-content" id="myTabContent">
                         <!-- User Profile and Social Media Tab-->
-                        <div class="tab-pane fade show active py-5 px-5" id="profile" role="tabpanel"
+                        <div class="tab-pane fade show py-5 px-5" id="profile" role="tabpanel"
                             aria-labelledby="profile-tab">
                             <p class="display-6">Profile</p>
                             <p class="lead">You can update your <strong>Instagram</strong> and <strong>Youtube</strong>
@@ -51,12 +52,12 @@
                             <button class="btn btn-primary">Update   <i class="fas fa-sync-alt"></i></button>
 
                         </div>
+
                         <!-- List of recipes by the user Tab -->
-                        <div class="tab-pane fade py-5 px-5" id="recipes" role="tabpanel" aria-labelledby="recipes-tab">
+                        <div class="tab-pane fade show active py-5 px-5" id="recipes" role="tabpanel"
+                            aria-labelledby="recipes-tab">
                             <p class="display-6">My Recipes</p>
                             <p class="lead">Here you can View, Edit and Delete your recipes.</p>
-
-
 
                             <!-- My Recipes Area -->
                             <div class="row">
@@ -66,23 +67,10 @@
                                     <div class="col-3">Category</div>
                                     <div class="col-2">Manage</div>
                                 </div>
-
                                 <hr class="mt-2">
 
-                                <!-- Recipes -->
+                                <!-- Recipes Pulled from DB -->
                                 <ul>
-                                    <li class="d-flex flex-row">
-                                        <div class="col-7">
-                                            <p class="fw-bold">Gelo Seco Delicioso</p>
-                                        </div>
-                                        <div class="col-3">Gelo</div>
-                                        <div class="col-2 d-flex flex-row align-content-start">
-                                            <button class="btn g-0 m-0 p-0"><i
-                                                    class="fas fa-pen-square fa-2x mx-1"></i></button>
-                                            <button class="btn g-0 m-0 p-0"><i
-                                                    class="fas fa-trash fa-2x mx-1"></i></button>
-                                        </div>
-                                    </li>
 
                                     {% if recipes %}
                                     {% for recipe in recipes %}
@@ -93,9 +81,11 @@
                                         <div class="col-3">{{ recipe.category.title().replace("_", " & ") }}</div>
                                         <div class="col-2 d-flex flex-row align-content-start">
                                             <!-- Edit button -->
-                                            <button class="btn g-0 m-0 p-0">
-                                                <i class="fas fa-pen-square fa-2x mx-1"></i>
-                                            </button>
+                                            <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+                                                <button type="button" class="btn g-0 m-0 p-0">
+                                                    <i class="fas fa-pen-square fa-2x mx-1"></i>
+                                                </button>
+                                            </a>
                                             <!-- Delete button -->
                                             <button class="btn g-0 m-0 p-0">
                                                 <i class="fas fa-trash fa-2x mx-1"></i>

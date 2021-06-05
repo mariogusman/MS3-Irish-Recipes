@@ -4,6 +4,7 @@ from flask import Flask, flash, render_template, redirect, request, session, url
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+import datetime
 
 if os.path.exists("env.py"):
     import env
@@ -100,7 +101,24 @@ def addrecipe():
     """
     Allows users to create recipes and push to DB
     """
-    if session.get("user"):  # If user is logged in
+    if session.get("user"):
+        # If user is logged in
+        if request.method == "POST":
+            new_recipe = {
+                "title": request.form.get("recipe_title"),
+                "description": request.form.get("recipe_description"),
+                "category": request.form.get("recipe_category"),
+                "time": request.form.get("recipe_time"),
+                "yeld": request.form.get("recipe_yeld"),
+                "ingredients": request.form.getlist("ingredients"),
+                "steps": request.form.getlist("steps"),
+                "author": session["user"],
+                "date": datetime.datetime.utcnow(),
+                "url": request.form.get("recipe_title").replace(" ", "-").lower(),
+            }
+            mongo.db.recipes.insert_one(new_recipe)
+            flash("Recipe Published Successfully!")
+            return render_template("profile.html")
 
         return render_template("add_recipe.html")
 

@@ -155,7 +155,10 @@ def edit_recipe(recipe_id):
                 "url": request.form.get("recipe_title").replace(" ", "-").lower(),
             }
             mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, new_recipe_update)
+            # alerts users that recipe was published
             flash("Recipe Successfully Updated!")
+            # redirects users to the profile page
+            return redirect(url_for("profile", username=session["user"]))
 
         recipe_record = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
         categories = mongo.db.categories.find().sort("category_name", 1)

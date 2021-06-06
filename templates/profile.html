@@ -57,8 +57,9 @@
                                     <span class="input-group-text text-muted" id="basic-addon1"><i
                                             class="fab fa-instagram"></i></span>
                                     <input type="text" class="form-control" name="user_instagram"
-                                        value="{{ user_social.user_instagram }}" placeholder="@username"
-                                        aria-label="Username" aria-describedby="basic-addon1">
+                                        value="{{ user_social.user_instagram }}"
+                                        placeholder="Your IG Username, (eg. talamh_bia)" aria-label="Username"
+                                        aria-describedby="basic-addon1">
                                 </div>
                                 <button class="btn btn-primary">Update <i class="fas fa-sync-alt"></i></button>
                             </form>
@@ -87,7 +88,9 @@
                                     {% for recipe in recipes %}
                                     <li class="d-flex flex-row profile-recipe-table rounded">
                                         <div class="col-8 ps-1">
-                                            <p class="fw-bold m-0 p-0 pt-1 g-0">{{ recipe.title.title() }}</p>
+                                            <a href="{{ url_for('recipes', recipe_id=recipe._id) }}">
+                                                <p class="fw-bold m-0 p-0 pt-1 g-0">{{ recipe.title.title() }}</p>
+                                            </a>
                                         </div>
                                         <div class="col-3">
                                             <p class="m-0 p-0 pt-1 g-0">{{ recipe.category.title().replace("_", " & ")

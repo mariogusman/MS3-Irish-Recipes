@@ -49,7 +49,12 @@ a:hover{
 .fa-trash:hover{
     color: #8a422d;
 }
-
+.fa-instagram:hover{
+    color: palevioletred;
+}
+.fa-youtube:hover{
+    color:red;
+}
 .upload {
     background-color: whitesmoke;
     
@@ -92,6 +97,9 @@ select > .recipe-form {
 .profile-recipe-table:hover{
     background-color: whitesmoke;
 } 
+.ing-step-hover:hover {
+    background-color: whitesmoke;
+}
 
 #recipeImageUpload{
     cursor:pointer;
@@ -115,8 +123,6 @@ select > .recipe-form {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Coustard', serif;
     font-weight: 400;
-    
-
 }
 #logo {
     font-family: 'Coustard', serif;

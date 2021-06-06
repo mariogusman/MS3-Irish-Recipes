@@ -46,12 +46,15 @@ def register():
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
+            "youtube": "",
+            "instagram": "",
         }
         mongo.db.users.insert_one(register)
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
+
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
@@ -72,6 +75,7 @@ def login():
             ):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
+
                 return redirect(url_for("profile", username=session["user"]))
             else:
                 # invalid password match
@@ -88,13 +92,31 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    """
+    Allows user to change the profile info and push an update to DB.
+    Alows user to view recipes written by user
+    """
     # grab the session user's username from db
     username = mongo.db.users.find_one({"username": session["user"]})["username"]
 
-    if session["user"]:
+    # if session["user"]:
+    if session.get("user"):
+        if request.method == "POST":
+            profile_update = {
+                "user_youtube": request.form.get("user_youtube"),
+                "user_instagram": request.form.get("user_instagram").lower(),
+            }
+            mongo.db.users.update_one({"username": username}, {"$set": profile_update})
+            # alerts users that profile was updated
+            flash("Profile Successfully Updated!")
+            return redirect(url_for("profile", username=session["user"]))
+
         # Retrieve recipes from db added by user
+        user_social = mongo.db.users.find_one({"username": username})
         recipes = list(mongo.db.recipes.find({"author": username}).sort("date", -1))
-        return render_template("profile.html", username=username, recipes=recipes)
+        return render_template(
+            "profile.html", username=username, recipes=recipes, user_social=user_social
+        )
 
     return redirect(url_for("login"))
 
@@ -162,10 +184,7 @@ def edit_recipe(recipe_id):
             return redirect(url_for("profile", username=session["user"]))
 
         recipe_record = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-        categories = mongo.db.categories.find().sort("category_name", 1)
-        return render_template(
-            "edit_recipe.html", recipe=recipe_record, categories=categories
-        )
+        return render_template("edit_recipe.html", recipe=recipe_record)
 
     return redirect(url_for("login"))
 

@@ -33,24 +33,35 @@
                                 pages below. <br>
                                 They will be shown on your recipes right next to your name!</p>
 
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                                <input type="text" class="form-control" placeholder="{{ username }}"
-                                    aria-label="Username" aria-describedby="basic-addon1" readonly>
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1"><i class="fab fa-youtube"></i></span>
-                                <input type="text" class="form-control" placeholder="youtube.com/c/YourChannel"
-                                    aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1"><i class="fab fa-instagram"></i></span>
-                                <input type="text" class="form-control" placeholder="@username" aria-label="Username"
-                                    aria-describedby="basic-addon1">
-                            </div>
-                            <button class="btn btn-primary">Update   <i class="fas fa-sync-alt"></i></button>
-
+                            <!-- User update form -->
+                            <form method="post">
+                                <!-- Username -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text text-muted" id="basic-addon1"><i
+                                            class="fas fa-user"></i></span>
+                                    <input type="text" class="form-control" placeholder="{{ username }}"
+                                        aria-label="Username" aria-describedby="basic-addon1" disabled readonly>
+                                </div>
+                                <!-- Youtube -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text text-muted" id="basic-addon1">
+                                        <i class="fab fa-youtube"></i></span>
+                                    <input type="text" class="form-control" name="user_youtube"
+                                        value="{{ user_social.user_youtube }}"
+                                        placeholder="URL of your Channel (eg. youtube.com/channel/UCKRfPElX5ZJDoJavDqPrpKg)"
+                                        aria-label="Username" aria-describedby="basic-addon1"
+                                        pattern="^https?:\/\/(www\.)?youtube\.com\/(channel\/UC[\w-]{21}[AQgw]|(c\/|user\/)?[\w-]+)$">
+                                </div>
+                                <!-- Instagram -->
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text text-muted" id="basic-addon1"><i
+                                            class="fab fa-instagram"></i></span>
+                                    <input type="text" class="form-control" name="user_instagram"
+                                        value="{{ user_social.user_instagram }}" placeholder="@username"
+                                        aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                                <button class="btn btn-primary">Update <i class="fas fa-sync-alt"></i></button>
+                            </form>
                         </div>
 
                         <!-- List of recipes by the user Tab -->

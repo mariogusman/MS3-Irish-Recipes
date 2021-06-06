@@ -91,7 +91,7 @@ select > .recipe-form {
 }
 .profile-recipe-table:hover{
     background-color: whitesmoke;
-}
+} 
 
 #recipeImageUpload{
     cursor:pointer;

@@ -25,10 +25,15 @@ def index():
     return render_template("index.html", index=index)
 
 
-@app.route("/recipes")
-def recipes():
-    recipes = mongo.db.recipes.find()
-    return render_template("recipes.html", recipes=recipes)
+@app.route("/recipes/<recipe_id>")
+def recipes(recipe_id):
+    """
+    Populates fields with recipe/user data
+    """
+
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    user = mongo.db.users.find_one({"username": recipe["author"]})
+    return render_template("recipes.html", recipe=recipe, user=user)
 
 
 @app.route("/register", methods=["GET", "POST"])

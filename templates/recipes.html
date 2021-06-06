@@ -1,32 +1,112 @@
 {% extends 'base.html' %}
 {% block content %}
+<script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
 
-<main>
-    <h1>Recipes</h1>
 
-    {% for recipe in recipes %}
-    <strong>Recipe Name: </strong>{{ recipe.recipe_name.capitalize() }}<br>
-    <strong>Main Ingredient: </strong>{{ recipe.category.capitalize() }}<br>
-    <strong>Total Time: </strong>{{ recipe.total_time }} minutes<br>
-    <strong>Servings: </strong>{{ recipe.servings }} servings<br>
-    <h3>Ingredients:</h3>
-    <ul>
-        {% for ingredient in recipe.ingredients %}
-        <li>{{ ingredient }}</li>
-        {% endfor %}
-    </ul>
-    <h3>Steps:</h3>
-    <ul>
-        {% for step in recipe.steps %}
-        <li>{{ step }}</li>
-        {% endfor %}
-    </ul>
+<div class="container">
+    <div class="row align-items-center justify-content-md-center my-5">
+        <div class="col-lg-8">
+            <div class="card-panel">
+            </div>
+            <div class="card">
+                <form action="" method="post">
+                    <div class="card-body">
+                        <!-- Upper Row - Basic Info -->
+                        <div class="row m-2">
+                            <!-- Left Side - Author, Description, Servings, Time -->
+                            <div class="col-md-5 pe-2 align-self-end mb-3">
+                                <!-- Title -->
+                                <p class="display-6">{{ recipe.title.title() }}</i></p>
+                                <!-- Description -->
+                                <p class="lead">{{ recipe.description.title() }}</p>
+                                <!-- Author -->
+                                <p class="fw-bold d-inline">Author:</p>
+                                <p class="d-inline m-2">{{ recipe.author }}</p>
 
-    <strong>Calories: </strong>{{ recipe.calories }} grams<br>
-    <strong>Fat: </strong> {{ recipe.macros_fat }} grams<br>
-    <strong>Protein: </strong> {{ recipe.macros_prot }} grams<br>
-    <strong>Cabs: </strong> {{ recipe.macros_carb }} grams
-    {% endfor %}
-</main>
+                                <!-- Instagram Icon if there is one added -->
+                                {% if user.user_instagram != "" %}
+                                <a href="https://www.instagram.com/{{ user.user_instagram }}" target="_blank"
+                                    rel="noopener noreferrer"><i class="fab fa-lg fa-instagram m-1"></i></a>
+                                {% endif %}
+
+                                <!-- Youtube Icon if there is one added -->
+                                {% if user.user_youtube != "" %}
+                                <a href="{{ user.user_youtube }}" target="_blank" rel="noopener noreferrer"><i
+                                        class="fab fa-lg fa-youtube"></i>
+                                </a>
+                                {% endif %}
+
+                                <hr>
+
+
+                                <!-- Category -->
+                                <p class="mb-1"><strong>Category:</strong> {{ recipe.category }}</p>
+
+                                <!-- Time and Yeld -->
+                                <p class="mb-1"><strong>Time:</strong> {{ recipe.time.capitalize() }}</p>
+                                <p class="mb-1"><strong>Yeld:</strong> {{ recipe.yeld.capitalize() }}</p>
+                            </div>
+                            <!-- Right Side - Picture  -->
+                            <div class="col-md-7 rounded upload d-flex justify-content-center" id="recipeImageUpload">
+                                <div>
+                                    <img src="{{ url_for('static', filename='images/foodupload.png') }}"
+                                        alt="Upload Your Recipe Photo">
+                                    <p class="text-center fw-bold">Upload a Picture</p>
+
+                                    <!-- Found on http://bit.ly/upload-file-jQuery -->
+                                    <input id="fileinput" type="file" name="fileinput" style="display:none" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-3">
+                    </div>
+
+
+                    <!-- Lower Row - Ingredients and Steps -->
+                    <div class="row m-3">
+
+                        <!-- Ingredients -->
+                        <div class="col-md-5">
+                            <p class="display-6 small text-center mt-3">Ingredients</p>
+                            <hr>
+                            <ul class="ps-4" id="">
+                                {% for ingredient in recipe.ingredients %}
+                                <li class="ing-step-hover rounded">
+                                    <div class="row py-1">
+                                        <div class="col ps-4">
+                                            <p class="m-1">{{ ingredient.capitalize() }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+
+                        </div>
+
+                        <!-- Steps -->
+                        <div class="col-md-7 ">
+                            <p class="display-6 text-center mt-3">Steps</p>
+                            <hr>
+                            <ol class="ps-4 ms-0" id="newStepsFields">
+                                <!-- First Step -->
+                                {% for step in recipe.steps %}
+                                <li class="ing-step-hover rounded">
+                                    <div class="row  py-1">
+                                        <div class="col">
+                                            <p class="m-1">{{ step.capitalize() }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ol>
+                        </div>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
 
 {% endblock content %}

@@ -23,11 +23,11 @@ mongo = PyMongo(app)
 @app.route("/")
 def index():
     """
-    Renders main page, Checks user session to display CTA
+    Renders main page, Checks user session to display call to action
     Allows users to make searches
     Shows recent recipes added
     """
-    # Check user session to show Register CTA
+    # Check user session to show Register call to action
     if session.get("user"):
         logged_in = True
     else:
@@ -36,9 +36,21 @@ def index():
     # returns most recent recipes to show on "recently added"
     recent = list(mongo.db.recipes.find().sort("date", -1))
 
+    # query
+
     return render_template(
         "index.html", index=index, logged_in=logged_in, recent=recent
     )
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    """
+    Populates screen with query results
+    """
+    query = request.form.get("query")
+    result = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    return render_template("search.html", result=result)
 
 
 @app.route("/recipes/<recipe_id>")

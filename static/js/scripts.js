@@ -47,3 +47,8 @@ $(document).on('click', '#recipeImageUpload', function () {
     $('#fileinput').trigger('click');
 });
 
+// Make entire <div> clickable - Found on https://css-tricks.com/snippets/jquery/make-entire-div-clickable/ and edited
+$(document).on('click', '.myBox', function () {
+    window.location = $(this).find("a").attr("href");
+    return false;
+});

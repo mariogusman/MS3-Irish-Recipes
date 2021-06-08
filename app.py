@@ -33,7 +33,12 @@ def index():
     else:
         logged_in = False
 
-    return render_template("index.html", index=index, logged_in=logged_in)
+    # returns most recent recipes to show on "recently added"
+    recent = list(mongo.db.recipes.find().sort("date", -1))
+
+    return render_template(
+        "index.html", index=index, logged_in=logged_in, recent=recent
+    )
 
 
 @app.route("/recipes/<recipe_id>")

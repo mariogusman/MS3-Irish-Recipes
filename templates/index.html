@@ -38,7 +38,7 @@
         <form action="">
             <div class="input-group search-group ps-3 rounded border">
                 <input type="text" class="form-control" name="search" id="home-search" placeholder="Search" autofocus>
-                <button class="btn search-btn"><i class="fas fa-2x fa-search"></i></button>
+                <button class="btn search-btn pe-4"><i class="fas fa-2x fa-search"></i></button>
             </div>
             <div class="div text-center d-flex flex-row justify-content-center text-muted">
                 <p class="me-1 fw-bold">Suggested:</p>
@@ -57,56 +57,122 @@
         <hr>
         <div class="row align-content-center cat-list">
 
-            <div class="col-md-3 d-flex flex-row rounded">
+            <div class="col-md-3 d-flex flex-row rounded myBox">
                 <i class="flaticon-fish cat-list-icon align-self-center"></i>
                 <p class="align-self-center ps-3 pt-3">Fish</p>
+                <a href="#"></a>
             </div>
 
-            <div class="col-md-3 d-flex flex-row rounded">
+
+            <div class="col-md-3 d-flex flex-row rounded myBox">
                 <i class="flaticon-beef cat-list-icon align-self-center"></i>
                 <p class="align-self-center ps-3 pt-3">Beef</p>
+                <a href="#"></a>
             </div>
-            <div class="col-md-3 d-flex flex-row rounded">
+
+
+
+            <div class="col-md-3 d-flex flex-row rounded myBox">
                 <i class="flaticon-chicken cat-list-icon align-self-center"></i>
                 <p class="align-self-center ps-3 pt-3">Poultry</p>
+                <a href="#"></a>
             </div>
 
-            <div class="col-md-3 d-flex flex-row rounded">
+
+
+            <div class="col-md-3 d-flex flex-row rounded myBox">
                 <i class="flaticon-shrimp cat-list-icon align-self-center"></i>
                 <p class="align-self-center ps-3 pt-3">Shellfish</p>
-            </div>
-            <div class="col-md-3 d-flex flex-row rounded">
-                <i class="flaticon-cabbage cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Vegetables</p>
-            </div>
-            <div class="col-md-3 d-flex flex-row rounded">
-                <i class="flaticon-bacon cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Boar and Pork</p>
-            </div>
-            <div class="col-md-3 d-flex flex-row rounded">
-                <i class="flaticon-diet cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Eggs and Dairy</p>
-            </div>
-            <div class="col-md-3 d-flex flex-row rounded">
-                <i class="flaticon-lamb cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Lamb, Mutton and Goat</p>
+                <a href="#"></a>
             </div>
 
-            <div class="col-md-3 d-flex flex-row rounded p-2 offset-md-3">
+
+
+            <div class="col-md-3 d-flex flex-row rounded myBox">
+                <i class="flaticon-cabbage cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Vegetables</p>
+                <a href="#"></a>
+            </div>
+
+
+
+            <div class="col-md-3 d-flex flex-row rounded myBox">
+                <i class="flaticon-bacon cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Boar and Pork</p>
+                <a href="#"></a>
+            </div>
+
+
+
+            <div class="col-md-3 d-flex flex-row rounded myBox">
+                <i class="flaticon-diet cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Eggs and Dairy</p>
+                <a href="#"></a>
+            </div>
+
+
+
+            <div class="col-md-3 d-flex flex-row rounded myBox">
+                <i class="flaticon-lamb cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Lamb, Mutton and Goat</p>
+                <a href="#"></a>
+            </div>
+
+
+
+            <div class="col-md-3 d-flex flex-row rounded p-2 offset-md-3 myBox">
                 <i class="flaticon-bread cat-list-icon align-self-center"></i>
                 <p class="align-self-center ps-3 pt-3">Bread, Scones and
                     Crackers</p>
+                <a href="#"></a>
             </div>
-            <div class="col-md-3 d-flex flex-row rounded p-2">
+
+
+            <div class="col-md-3 d-flex flex-row rounded p-2 myBox">
                 <i class="flaticon-cupcake cat-list-icon align-self-center"></i>
                 <p class="align-self-center ps-3 pt-3">Cakes, Pastries and
                     Desserts</p>
+                <a href="#"></a>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Recently Added -->
+<div class="row align-items-center justify-content-center mt-3 mb-5">
+    <div class="col-8">
+        <p class="display-6 text-center">Recently Added</p>
+        <hr>
+        <div class="row">
 
+            <!-- Most Recent -->
+            {% for recipe in recent %}
+            {% if loop.index < 7 %} <div class="col-lg-4">
+                <div class="card mb-3 recipe-card myBox">
+                    <!-- Recipe Image -->
+                    <img src="#" class="card-img-top" alt="..." height="140">
+                    <div class="card-body">
+                        <!-- Recipe Name/Description -->
+                        <h5 class="card-title mb-0">{{ recipe.title }}</h5>
+                        <p class="small text-muted">{{ recipe.author }}</p>
+                        <p class="card-text">{{ recipe.description }}</p>
+                        <div class="row m-0 p-0 g-0">
+                            <div class="col d-flex flex-row justify-content-evenly">
+                                <p class="small mb-0"><i class="far fa-clock"></i> {{ recipe.time }}</p>
+                                <p class="small mb-0"><i class="fas fa-concierge-bell"></i> {{ recipe.yeld }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
+</div>
+</div>
 
 
 

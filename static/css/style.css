@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Coustard:wght@400;900&display=swap');
+@import url('http://fonts.cdnfonts.com/css/sherwood');
+
 
 
 /* Colors */
@@ -125,13 +127,17 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
 }
 #logo {
-    font-family: 'Coustard', serif;
+    font-family: 'Sherwood', sans-serif;
+    /* font-family: 'Coustard', serif; */
     font-weight: 900;
-    font-size: 200%;
+    font-size: 250%;
+    letter-spacing: 2px;
+    transition-duration: 0.3s;
 }
 
-#sublogo {
-    color: #2d8a67;
+#logo:hover{
+    color: white !important;
+    transition-duration: 0.3s;
 }
 
 /* Images */

@@ -22,7 +22,18 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    return render_template("index.html", index=index)
+    """
+    Renders main page, Checks user session to display CTA
+    Allows users to make searches
+    Shows recent recipes added
+    """
+    # Check user session to show Register CTA
+    if session.get("user"):
+        logged_in = True
+    else:
+        logged_in = False
+
+    return render_template("index.html", index=index, logged_in=logged_in)
 
 
 @app.route("/recipes/<recipe_id>")
@@ -104,7 +115,7 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one({"username": session["user"]})["username"]
 
-    # if session["user"]:
+    # if  TODOsession["user"]:
     if session.get("user"):
         if request.method == "POST":
             profile_update = {

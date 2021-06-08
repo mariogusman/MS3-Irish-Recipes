@@ -2,61 +2,115 @@
 {% block content %}
 
 <!-- Page Content-->
-<div class="container px-4 px-lg-5">
-    <!-- Heading Row-->
-    <div class="row gx-4 gx-lg-5 align-items-center my-5">
-        <div class="col-lg-7 rounded" id="index-dish"></div>
-        <div class="col-lg-5">
-            <h1 class="font-weight-light">Share or Learn the best Irish Recipes!</h1>
-            <p>Ireland has a rich food heritage with hundreds of local recipes ready to be discovered. Here you can
-                share and learn everything - from the easiest Mashed Potatoes, to the most sofisticated Seafood dish!
-            </p>
-            <a class="btn btn-primary btn-green" href="#!">Join Us!</a>
-        </div>
-    </div>
-    <!-- Call to Action-->
-    <div class="card text-white bg-secondary my-5 py-4 text-center">
-        <div class="card-body form-group">
-            <form action="">
-                <input type="text" name="search" id="search" placeholder="What do you want to cook today?">
-            </form>
-        </div>
-    </div>
 
-    <!-- Content Row-->
-    <div class="row gx-4 gx-lg-5">
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Card One</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
-                        numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+{% if logged_in == False %}
+<!-- Register CTA if user not in Session -->
+<div class="row align-items-center justify-content-center my-5">
+    <div class="col-10">
+        <div class="card-panel">
+            <div class="card">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                            alt="Delicious food" class="cta-image rounded-start" loading="lazy">
+                    </div>
+
+                    <div class="col-md-6 ps-3 pt-3">
+                        <p class="display-6">Welcome to Talamh Bia!</p>
+                        <p class="lead">Here you can <strong>find and share</strong> the best Irish Recipes.<br>
+                            We have everything, from Donegal to Cork, from Spud to Lobster!</p>
+
+                        <p class="lead">Join us now!</p>
+                        <a href="{{ url_for('register') }}">
+                            <button class="btn btn-primary btn-lg">Register</button></a>
+                    </div>
                 </div>
-                <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Card Two</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex
-                        natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore
-                        voluptates quos eligendi labore.</p>
-                </div>
-                <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Card Three</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
-                        numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                </div>
-                <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
             </div>
         </div>
     </div>
 </div>
+{% endif %}
+
+<!-- Search -->
+<div class="row align-items-center justify-content-center mt-5 mb-3">
+    <div class="col-8">
+        <form action="">
+            <div class="input-group search-group ps-3 rounded border">
+                <input type="text" class="form-control" name="search" id="home-search" placeholder="Search" autofocus>
+                <button class="btn search-btn"><i class="fas fa-2x fa-search"></i></button>
+            </div>
+            <div class="div text-center d-flex flex-row justify-content-center text-muted">
+                <p class="me-1 fw-bold">Suggested:</p>
+                <a href="#" class="ps-2">beef</a>,
+                <a href="#" class="ps-2">fish</a>,
+                <a href="#" class="ps-2">omelette</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Categories -->
+<div class="row align-items-center justify-content-center mb-5">
+    <div class="col-8">
+        <p class="display-6 text-center">Categories</p>
+        <hr>
+        <div class="row align-content-center cat-list">
+
+            <div class="col-md-3 d-flex flex-row rounded">
+                <i class="flaticon-fish cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Fish</p>
+            </div>
+
+            <div class="col-md-3 d-flex flex-row rounded">
+                <i class="flaticon-beef cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Beef</p>
+            </div>
+            <div class="col-md-3 d-flex flex-row rounded">
+                <i class="flaticon-chicken cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Poultry</p>
+            </div>
+
+            <div class="col-md-3 d-flex flex-row rounded">
+                <i class="flaticon-shrimp cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Shellfish</p>
+            </div>
+            <div class="col-md-3 d-flex flex-row rounded">
+                <i class="flaticon-cabbage cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Vegetables</p>
+            </div>
+            <div class="col-md-3 d-flex flex-row rounded">
+                <i class="flaticon-bacon cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Boar and Pork</p>
+            </div>
+            <div class="col-md-3 d-flex flex-row rounded">
+                <i class="flaticon-diet cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Eggs and Dairy</p>
+            </div>
+            <div class="col-md-3 d-flex flex-row rounded">
+                <i class="flaticon-lamb cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Lamb, Mutton and Goat</p>
+            </div>
+
+            <div class="col-md-3 d-flex flex-row rounded p-2 offset-md-3">
+                <i class="flaticon-bread cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Bread, Scones and
+                    Crackers</p>
+            </div>
+            <div class="col-md-3 d-flex flex-row rounded p-2">
+                <i class="flaticon-cupcake cat-list-icon align-self-center"></i>
+                <p class="align-self-center ps-3 pt-3">Cakes, Pastries and
+                    Desserts</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 
 {% endblock content %}

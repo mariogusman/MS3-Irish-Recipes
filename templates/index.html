@@ -35,9 +35,10 @@
 <!-- Search -->
 <div class="row align-items-center justify-content-center mt-5 mb-3">
     <div class="col-8">
-        <form action="">
+        <form action="{{ url_for('search') }}" method="POST">
             <div class="input-group search-group ps-3 rounded border">
-                <input type="text" class="form-control" name="search" id="home-search" placeholder="Search" autofocus>
+                <input type="text" class="form-control" name="query" id="query" minlength="3" placeholder="Search"
+                    autofocus required>
                 <button class="btn search-btn pe-4"><i class="fas fa-2x fa-search"></i></button>
             </div>
             <div class="div text-center d-flex flex-row justify-content-center text-muted">
@@ -151,9 +152,11 @@
                 <div class="card mb-3 recipe-card myBox">
                     <!-- Recipe Image -->
                     <img src="#" class="card-img-top" alt="..." height="140">
-                    <div class="card-body">
+                    <div class="card-body ">
                         <!-- Recipe Name/Description -->
-                        <h5 class="card-title mb-0">{{ recipe.title }}</h5>
+                        <a href="{{ url_for('recipes', recipe_id=recipe._id) }}">
+                            <h5 class="card-title mb-0">{{ recipe.title }}</h5>
+                        </a>
                         <p class="small text-muted">{{ recipe.author }}</p>
                         <p class="card-text">{{ recipe.description }}</p>
                         <div class="row m-0 p-0 g-0">
@@ -171,12 +174,5 @@
 
     </div>
 </div>
-</div>
-</div>
-
-
-
-
-
 
 {% endblock content %}

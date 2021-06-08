@@ -1,0 +1,50 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("./flaticon.ttf?6cb4f75ba52bfe35616d284a5690ed5e") format("truetype"),
+url("./flaticon.woff?6cb4f75ba52bfe35616d284a5690ed5e") format("woff"),
+url("./flaticon.woff2?6cb4f75ba52bfe35616d284a5690ed5e") format("woff2"),
+url("./flaticon.eot?6cb4f75ba52bfe35616d284a5690ed5e#iefix") format("embedded-opentype"),
+url("./flaticon.svg?6cb4f75ba52bfe35616d284a5690ed5e#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-beef:before {
+    content: "\f101";
+}
+.flaticon-bacon:before {
+    content: "\f102";
+}
+.flaticon-cupcake:before {
+    content: "\f103";
+}
+.flaticon-fish:before {
+    content: "\f104";
+}
+.flaticon-shrimp:before {
+    content: "\f105";
+}
+.flaticon-lamb:before {
+    content: "\f106";
+}
+.flaticon-bread:before {
+    content: "\f107";
+}
+.flaticon-chicken:before {
+    content: "\f108";
+}
+.flaticon-diet:before {
+    content: "\f109";
+}
+.flaticon-cabbage:before {
+    content: "\f10a";
+}

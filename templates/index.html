@@ -56,85 +56,98 @@
     <div class="col-8">
         <p class="display-6 text-center">Categories</p>
         <hr>
+
         <div class="row align-content-center cat-list">
 
-            <div class="col-md-3 d-flex flex-row rounded myBox">
-                <i class="flaticon-fish cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Fish</p>
-                <a href="#"></a>
+            <div class="col-md-3 rounded cat-form">
+                <form action="{{ url_for('search') }}" method="POST" class="h-100 d-flex flex-row align-items-center">
+                    <i class="flaticon-fish cat-list-icon align-self-center ms-2 me-3"></i>
+                    <p class="align-self-center mb-0">Fish</p>
+                    <input type="hidden" name="cat-query" id="cat-query" value="Fish">
+                </form>
             </div>
 
 
-            <div class="col-md-3 d-flex flex-row rounded myBox">
-                <i class="flaticon-beef cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Beef</p>
-                <a href="#"></a>
+            <div class="col-md-3 rounded cat-form">
+                <form action="{{ url_for('search') }}" method="POST" class="h-100 d-flex flex-row align-items-center">
+                    <i class="flaticon-beef cat-list-icon align-self-center ms-2 me-3"></i>
+                    <p class="align-self-center mb-0">Beef</p>
+                    <input type="hidden" name="cat-query" id="cat-query" value="Beef">
+                </form>
+            </div>
+
+            <div class="col-md-3 rounded cat-form">
+                <form action="{{ url_for('search') }}" method="POST" class="h-100 d-flex flex-row align-items-center">
+                    <i class="flaticon-chicken cat-list-icon align-self-center ms-2 me-3"></i>
+                    <p class="align-self-center mb-0">Poultry</p>
+                    <input type="hidden" name="cat-query" id="cat-query" value="Poultry">
+                </form>
             </div>
 
 
+            <div class="col-md-3 rounded cat-form">
+                <form action="{{ url_for('search') }}" method="POST" class="h-100 d-flex flex-row align-items-center">
+                    <i class="flaticon-shrimp cat-list-icon align-self-center ms-2 me-3"></i>
+                    <p class="align-self-center mb-0">Shellfish</p>
+                    <input type="hidden" name="cat-query" id="cat-query" value="Shellfish">
+                </form>
+            </div>
 
-            <div class="col-md-3 d-flex flex-row rounded myBox">
-                <i class="flaticon-chicken cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Poultry</p>
-                <a href="#"></a>
+            <div class="col-md-3 rounded cat-form">
+                <form action="{{ url_for('search') }}" method="POST" class="h-100 d-flex flex-row align-items-center">
+                    <i class="flaticon-cabbage cat-list-icon align-self-center ms-2 me-3"></i>
+                    <p class="align-self-center mb-0">Vegetables</p>
+                    <input type="hidden" name="cat-query" id="cat-query" value="Vegetables">
+                </form>
             </div>
 
 
+            <div class="col-md-3 rounded cat-form">
+                <form action="{{ url_for('search') }}" method="POST" class="h-100 d-flex flex-row align-items-center">
+                    <i class="flaticon-bacon cat-list-icon align-self-center ms-2 me-3"></i>
+                    <p class="align-self-center mb-0">Boar and Pork</p>
+                    <input type="hidden" name="cat-query" id="cat-query" value="Boar and Pork">
+                </form>
+            </div>
 
-            <div class="col-md-3 d-flex flex-row rounded myBox">
-                <i class="flaticon-shrimp cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Shellfish</p>
-                <a href="#"></a>
+            <div class="col-md-3 rounded cat-form">
+                <form action="{{ url_for('search') }}" method="POST" class="h-100 d-flex flex-row align-items-center">
+                    <i class="flaticon-diet cat-list-icon align-self-center ms-2 me-3"></i>
+                    <p class="align-self-center mb-0">Eggs and Dairy</p>
+                    <input type="hidden" name="cat-query" id="cat-query" value="Eggs and Dairy">
+                </form>
             </div>
 
 
+            <div class="col-md-3 rounded cat-form">
+                <form action="{{ url_for('search') }}" method="POST" class="h-100 d-flex flex-row align-items-center">
+                    <i class="flaticon-lamb cat-list-icon align-self-center ms-2 me-3"></i>
+                    <p class="align-self-center mb-0">Lamb, Mutton and Goat</p>
+                    <input type="hidden" name="cat-query" id="cat-query" value="Lamb, Mutton and Goat">
+                </form>
+            </div>
 
-            <div class="col-md-3 d-flex flex-row rounded myBox">
-                <i class="flaticon-cabbage cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Vegetables</p>
-                <a href="#"></a>
+            <div class="col-md-3 offset-md-3 rounded cat-form">
+                <form action="{{ url_for('search') }}" method="POST" class="h-100 d-flex flex-row align-items-center">
+                    <i class="flaticon-bread cat-list-icon align-self-center ms-2 me-3"></i>
+                    <p class="align-self-center mb-0">Bread, Scones and
+                        Crackers</p>
+                    <input type="hidden" name="cat-query" id="cat-query" value="Bread, Scones and
+                    Crackers">
+                </form>
             </div>
 
 
-
-            <div class="col-md-3 d-flex flex-row rounded myBox">
-                <i class="flaticon-bacon cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Boar and Pork</p>
-                <a href="#"></a>
+            <div class="col-md-3 rounded cat-form">
+                <form action="{{ url_for('search') }}" method="POST" class="h-100 d-flex flex-row align-items-center">
+                    <i class="flaticon-cupcake cat-list-icon align-self-center ms-2 me-3"></i>
+                    <p class="align-self-center mb-0">Cakes, Pastries and
+                        Desserts</p>
+                    <input type="hidden" name="cat-query" id="cat-query" value="Cakes, Pastries and
+                    Desserts">
+                </form>
             </div>
 
-
-
-            <div class="col-md-3 d-flex flex-row rounded myBox">
-                <i class="flaticon-diet cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Eggs and Dairy</p>
-                <a href="#"></a>
-            </div>
-
-
-
-            <div class="col-md-3 d-flex flex-row rounded myBox">
-                <i class="flaticon-lamb cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Lamb, Mutton and Goat</p>
-                <a href="#"></a>
-            </div>
-
-
-
-            <div class="col-md-3 d-flex flex-row rounded p-2 offset-md-3 myBox">
-                <i class="flaticon-bread cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Bread, Scones and
-                    Crackers</p>
-                <a href="#"></a>
-            </div>
-
-
-            <div class="col-md-3 d-flex flex-row rounded p-2 myBox">
-                <i class="flaticon-cupcake cat-list-icon align-self-center"></i>
-                <p class="align-self-center ps-3 pt-3">Cakes, Pastries and
-                    Desserts</p>
-                <a href="#"></a>
-            </div>
         </div>
     </div>
 </div>

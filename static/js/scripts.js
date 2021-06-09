@@ -1,4 +1,4 @@
-// add ingredients
+// add ingredients from : https://shouts.dev/add-or-remove-input-fields-dynamically-using-jquery#step1 
 $(document).on("click", "#newIngredient", function () {
     var newIngredientInput = '';
     newIngredientInput += '<li id="ingredientGroup">';
@@ -13,7 +13,7 @@ $(document).on("click", "#newIngredient", function () {
     $('#newIngredientFields').append(newIngredientInput);
 });
 
-// add steps
+// add steps from : https://shouts.dev/add-or-remove-input-fields-dynamically-using-jquery#step1 
 var steps = 1;
 $(document).on("click", "#newStep", function () {
     steps++;
@@ -31,12 +31,12 @@ $(document).on("click", "#newStep", function () {
     $('#newStepsFields').append(newStepInput);
 });
 
-// remove ingredient row
+// remove ingredient row from : https://shouts.dev/add-or-remove-input-fields-dynamically-using-jquery#step1 
 $(document).on('click', '#removeingredientGroup', function () {
     $(this).closest('#ingredientGroup').remove();
 });
 
-// remove step row
+// remove step row from : https://shouts.dev/add-or-remove-input-fields-dynamically-using-jquery#step1 
 $(document).on('click', '#removeStepGroup', function () {
     $(this).closest('#stepGroup').remove();
     steps--
@@ -47,7 +47,11 @@ $(document).on('click', '#recipeImageUpload', function () {
     $('#fileinput').trigger('click');
 });
 
-// Make entire <div> clickable - Found on https://css-tricks.com/snippets/jquery/make-entire-div-clickable/ and edited
+$(document).on('click', '.cat-form', function () {
+    $(this).children().submit();
+});
+
+// Make entire div clickable : https://css-tricks.com/snippets/jquery/make-entire-div-clickable/
 $(document).on('click', '.myBox', function () {
     window.location = $(this).find("a").attr("href");
     return false;

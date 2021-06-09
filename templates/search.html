@@ -17,12 +17,11 @@
 <!-- Recently Added -->
 <div class="row align-items-center justify-content-center mt-3 mb-5">
     <div class="col-8">
-        {% if result %}
+        {% if result or cat_result %}
         <div class="row">
             <p class="display-6 text-center">Search Results</p>
             <hr>
-            {% for recipe in result %}
-
+            {% for recipe in result or cat_result %}
             <div class="col-lg-4">
                 <div class="card mb-3 recipe-card myBox">
                     <!-- Recipe Image -->
@@ -51,8 +50,6 @@
             <p class="lead text-center">Try again.</p>
 
             {% endif %}
-
-
         </div>
     </div>
     {% endblock %}

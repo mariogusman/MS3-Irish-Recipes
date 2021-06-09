@@ -36,8 +36,6 @@ def index():
     # returns most recent recipes to show on "recently added"
     recent = list(mongo.db.recipes.find().sort("date", -1))
 
-    # query
-
     return render_template(
         "index.html", index=index, logged_in=logged_in, recent=recent
     )
@@ -48,9 +46,17 @@ def search():
     """
     Populates screen with query results
     """
+    query = ""
+    result = ""
+
     query = request.form.get("query")
-    result = list(mongo.db.recipes.find({"$text": {"$search": query}}))
-    return render_template("search.html", result=result)
+    if query:
+        result = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+
+    cat_query = request.form.get("cat-query")
+    if cat_query:
+        cat_result = list(mongo.db.recipes.find({"$text": {"$search": cat_query}}))
+    return render_template("search.html", result=result, cat_result=cat_result)
 
 
 @app.route("/recipes/<recipe_id>")
@@ -174,7 +180,6 @@ def addrecipe():
                 "steps": request.form.getlist("steps"),
                 "author": session["user"],
                 "date": datetime.datetime.utcnow(),
-                "url": request.form.get("recipe_title").replace(" ", "-").lower(),
             }
             # after defining the new object, inserts in the recipes collection
             mongo.db.recipes.insert_one(new_recipe)

@@ -156,36 +156,36 @@
 
             <!-- Most Recent -->
             {% for recipe in recent %}
-            {% if loop.index < 7 %} <div class="col-lg-4">
-                <div class="card mb-3 recipe-card myBox">
-                    <!-- Recipe Image -->
-                    {% if recipe.photo_url %}
-                    <img src="{{ recipe.photo_url }}" class="card-img-top" alt="Picture of {{ recipe.title }}"
-                        height="140">
-                    {% else %}
-                    <img src="{{ url_for('static', filename='images/talamh_bia.png') }}" class="card-img-top"
-                        alt="Picture of {{ recipe.title }}" height="140">
-                    {% endif %}
-                    <div class="card-body ">
-                        <!-- Recipe Name/Description -->
-                        <a href="{{ url_for('recipes', recipe_id=recipe._id) }}">
-                            <h5 class="card-title mb-0">{{ recipe.title }}</h5>
-                        </a>
-                        <p class="small text-muted">{{ recipe.author }}</p>
-                        <p class="card-text">{{ recipe.description }}</p>
-                        <div class="row m-0 p-0 g-0">
-                            <div class="col d-flex flex-row justify-content-evenly">
-                                <p class="small mb-0"><i class="far fa-clock"></i> {{ recipe.time }}</p>
-                                <p class="small mb-0"><i class="fas fa-concierge-bell"></i> {{ recipe.yeld }}</p>
+            {% if loop.index < 7 %} <!-- cards -->
+                <div class="col-lg-4">
+                    <div class="card mb-3 recipe-card myBox">
+                        <!-- Recipe Image -->
+                        {% if recipe.photo_url %}
+                        <img src="{{ recipe.photo_url }}" class="card-img-top" alt="Picture of {{ recipe.title }}"
+                            height="140">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='images/talamh_bia.png') }}" class="card-img-top"
+                            alt="Picture of {{ recipe.title }}" height="140">
+                        {% endif %}
+                        <div class="card-body ">
+                            <!-- Recipe Name/Description -->
+                            <a href="{{ url_for('recipes', recipe_id=recipe._id) }}">
+                                <h5 class="card-title mb-0">{{ recipe.title }}</h5>
+                            </a>
+                            <p class="small text-muted">{{ recipe.author }}</p>
+                            <p class="card-text">{{ recipe.description }}</p>
+                            <div class="row m-0 p-0 g-0">
+                                <div class="col d-flex flex-row justify-content-evenly">
+                                    <p class="small mb-0"><i class="far fa-clock"></i> {{ recipe.time }}</p>
+                                    <p class="small mb-0"><i class="fas fa-concierge-bell"></i> {{ recipe.yeld }}</p>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
         </div>
     </div>
-</div>
-{% endif %}
-{% endfor %}
+    {% endif %}
+    {% endfor %}
 
-{% endblock content %}
+    {% endblock content %}

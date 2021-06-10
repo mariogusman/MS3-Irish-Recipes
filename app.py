@@ -40,6 +40,7 @@ def index():
     # returns most recent recipes to show on "recently added"
     recent = list(mongo.db.recipes.find().sort("date", -1))
 
+    # renders index template
     return render_template(
         "index.html", index=index, logged_in=logged_in, recent=recent
     )
@@ -48,18 +49,27 @@ def index():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     """
-    Populates screen with query results
+    Populates screen with results of query
+    Query can come from index.html or the actual search page
     """
+    # defines empty variable, if empty an error message will be displayed on the results page
     query = ""
     result = ""
+    cat_query = ""
+    cat_result = ""
 
+    # gets search content if not empty will search for those terms in Recipes
     query = request.form.get("query")
     if query:
         result = list(mongo.db.recipes.find({"$text": {"$search": query}}))
 
+    # cat_query is for the category icons on homepage
+    # will also search for the category in Recipes
     cat_query = request.form.get("cat-query")
     if cat_query:
         cat_result = list(mongo.db.recipes.find({"$text": {"$search": cat_query}}))
+
+    # renders search template
     return render_template("search.html", result=result, cat_result=cat_result)
 
 
@@ -69,23 +79,35 @@ def recipes(recipe_id):
     Populates fields with recipe/user data
     """
 
+    # defines recipe and user
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     user = mongo.db.users.find_one({"username": recipe["author"]})
+
+    # returns recipes template
     return render_template("recipes.html", recipe=recipe, user=user)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Allows users to create accounts
+    Checks if username is taken
+    Pushes new user to the DB
+    Logs user in
+    """
     if request.method == "POST":
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()}
         )
 
+        # if username taken will display Flash error and 'refresh' page
         if existing_user:
             flash("Oops... This username is already taken!")
             return redirect(url_for("register"))
 
+        # if username not taken and password validated,
+        # generates password hash and push to DB
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
@@ -94,73 +116,85 @@ def register():
         }
         mongo.db.users.insert_one(register)
 
-        # put the new user into 'session' cookie
+        # put the new user into 'session' cookie and
+        # display Flash message Success
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-
+        # redirects user to profile page where they can see their recipes and edit profile
         return redirect(url_for("profile", username=session["user"]))
-
+    # Renders register template
     return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """
+    Validates if username is existent and password matches
+    """
     if request.method == "POST":
-        # Checks if the username exists in users database
+        # Checks if the username exists in Users collection
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()}
         )
 
+        # if username exist in Users collection
         if existing_user:
-            # ensure hashed password matches user input
+            # Checks if input password matches the one we have and put them in session
             if check_password_hash(
                 existing_user["password"], request.form.get("password")
             ):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
-
+                # redirects to profile page while in session
                 return redirect(url_for("profile", username=session["user"]))
             else:
-                # invalid password match
+                # If password does not match, display Error message
+                # Refreshes login page
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
 
         else:
-            # username doesn't exist
+            # If username does not exist, display Error message
+            # Refreshes login page
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
-
+    # renders login template
     return render_template("login.html")
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     """
-    Allows user to change the profile info and push an update to DB.
+    Allows user to change the profile info and push update to collection
     Alows user to view recipes written by user
     """
     # grab the session user's username from db
     username = mongo.db.users.find_one({"username": session["user"]})["username"]
 
-    # if  TODOsession["user"]:
+    # if user is logged in
     if session.get("user"):
         if request.method == "POST":
             profile_update = {
+                # collects user input in the social media icons
                 "user_youtube": request.form.get("user_youtube"),
                 "user_instagram": request.form.get("user_instagram").lower(),
             }
+            # pushes updated values to the users collection
             mongo.db.users.update_one({"username": username}, {"$set": profile_update})
             # alerts users that profile was updated
             flash("Profile Successfully Updated!")
+            # redirects user back to profile page
             return redirect(url_for("profile", username=session["user"]))
 
-        # Retrieve recipes from db added by user
+        # Retrieve recipes/social links from db added by user
         user_social = mongo.db.users.find_one({"username": username})
         recipes = list(mongo.db.recipes.find({"author": username}).sort("date", -1))
+        # renders profile template
         return render_template(
             "profile.html", username=username, recipes=recipes, user_social=user_social
         )
 
+    # if user not logged in - redirects to login page
     return redirect(url_for("login"))
 
 
@@ -234,8 +268,14 @@ def edit_recipe(recipe_id):
 
 @app.route("/delete/<recipe_id>")
 def delete(recipe_id):
+    """
+    Deletes recipe based on recipe id
+    """
+    # delete recipe
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    # Flash message success
     flash("Recipe Successfully Deleted!")
+    # redirects user back to profile while in session
     return redirect(url_for("profile", username=session["user"]))
 
 
@@ -244,8 +284,9 @@ def logout():
     # Removes 'user' from 'session' Cookie
     flash("You have been logged out")
     session.pop("user")
+    # redirects user to login page
     return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)
+    app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=False)

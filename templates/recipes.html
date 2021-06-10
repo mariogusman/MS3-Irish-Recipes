@@ -31,7 +31,7 @@
                                 {% endif %}
 
                                 <!-- Youtube Icon if there is one added -->
-                                {% if user.user_youtube != "" %}
+                                {% if user.user_youtube %}
                                 <a href="{{ user.user_youtube }}" target="_blank" rel="noopener noreferrer"><i
                                         class="fab fa-lg fa-youtube"></i>
                                 </a>
@@ -51,10 +51,10 @@
                             <div class="col-md-7 rounded d-flex justify-content-center">
                                 {% if recipe.photo_url %}
                                 <img src="{{ recipe.photo_url }}" alt="Picture of {{ recipe.title }}" id="recipe-pic"
-                                    class="w-100">
+                                    class="w-100 rounded">
                                 {% else %}
                                 <img src="{{ url_for('static', filename='images/talamh_bia.png') }}"
-                                    alt="Picture of {{ recipe.title }}" class="w-100">
+                                    alt="Picture of {{ recipe.title }}" class="w-100 rounded">
 
                                 {% endif %}
                             </div>

@@ -25,8 +25,13 @@
             <div class="col-lg-4">
                 <div class="card mb-3 recipe-card myBox">
                     <!-- Recipe Image -->
-
-                    <img src="#" class="card-img-top" alt="..." height="140">
+                    {% if recipe.photo_url %}
+                    <img src="{{ recipe.photo_url }}" class="card-img-top" alt="Picture of {{ recipe.title }}"
+                        height="140">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='images/talamh_bia.png') }}" class="card-img-top"
+                        alt="Picture of {{ recipe.title }}" height="140">
+                    {% endif %}
                     <div class="card-body">
                         <!-- Recipe Name/Description -->
                         <a href="{{ url_for('recipes', recipe_id=recipe._id) }}">

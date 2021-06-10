@@ -2,7 +2,6 @@
 {% block content %}
 
 <!-- Page Content-->
-<h2 class="d-none">Homepage</h2>
 
 {% if logged_in == False %}
 <!-- Register CTA if user not in Session -->
@@ -185,9 +184,8 @@
                 </div>
         </div>
     </div>
-    {% endif %}
-    {% endfor %}
-
 </div>
+{% endif %}
+{% endfor %}
 
 {% endblock content %}

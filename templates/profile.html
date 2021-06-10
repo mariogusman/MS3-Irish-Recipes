@@ -105,10 +105,13 @@
                                             </a>
                                         </div>
                                     </li>
-
-
-
                                     {% endfor %}
+                                    {% else %}
+                                    <div class="d-flex flex-column justify-content-center align-items-center">
+                                        <p class="lead">Looks like you haven't published any recipes yet.</p>
+                                        <a href="{{ url_for('addrecipe') }}"> <button class="btn btn-success">Create
+                                                Recipe</button> </a>
+                                    </div>
                                     {% endif %}
 
                                 </ul>

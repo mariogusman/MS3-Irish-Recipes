@@ -45,12 +45,12 @@ $(document).on('click', '#recipeImageUpload', function () {
     $('#openmodal').trigger('click');
 });
 
+// after page loeads, will update src of recipe image to the current img in mongo collection
 $(document).ready(function () {
     if (document.location.pathname.indexOf("/edit_recipe/") == 0) {
         var new_pic = $("#floatingInputValue").val();
         $('#recipe-new-image').attr('src', new_pic);
     }
-
 });
 
 // assigns new img input value to <img> src
@@ -61,9 +61,7 @@ $(document).ready(function () {
     });
 });
 
-
-
-
+// submits form inside of the cat-form div
 $(document).on('click', '.cat-form', function () {
     $(this).children().submit();
 });
@@ -73,30 +71,3 @@ $(document).on('click', '.myBox', function () {
     window.location = $(this).find("a").attr("href");
     return false;
 });
-
-
-// // Shows the cloudinary image upload widget
-// $(document).on('click', '#recipeImageUpload', function (event) {
-//     event.preventDefault();
-//     cloudinary.openUploadWidget({
-//         cloud_name: 'dcnk9qisf',
-//         upload_preset: 'ml_default',
-//         maxFiles: 1,
-//         maxFileSize: 100000,
-//         autoMinimize: true,
-//         resourceType: "image",
-//         min_height: 260,
-//     },
-//         imageUploaded)
-// });
-
-// // Shows the current selected image in the image box
-// $("#photo_url").on('change', function (event) {
-//     $('#recipe-new-image').prop("src", $(this).val());
-// });
-
-// // cloudinary callback. Sets image upload input to new URL
-// function imageUploaded(error, result) {
-//     $('#recipe-new-image').prop("src", result[0].secure_url);
-//     $('#photo_url').val(result[0].secure_url);
-// }

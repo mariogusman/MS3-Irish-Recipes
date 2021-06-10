@@ -208,7 +208,6 @@ def edit_recipe(recipe_id):
         # If user is logged in
         if request.method == "POST":
             # defines new_recipe using updated content from the forms
-            # date not included to maintain the original date for sorting purposes
             new_recipe_update = {
                 "title": request.form.get("recipe_title"),
                 "description": request.form.get("recipe_description"),
@@ -218,7 +217,8 @@ def edit_recipe(recipe_id):
                 "ingredients": request.form.getlist("ingredients"),
                 "steps": request.form.getlist("steps"),
                 "author": session["user"],
-                "url": request.form.get("recipe_title").replace(" ", "-").lower(),
+                "date": datetime.datetime.utcnow(),
+                "photo_url": request.form.get("photo_url"),
             }
             mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, new_recipe_update)
             # alerts users that recipe was published

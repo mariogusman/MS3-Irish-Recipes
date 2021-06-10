@@ -48,15 +48,15 @@
                                 <p class="mb-1"><strong>Yeld:</strong> {{ recipe.yeld.capitalize() }}</p>
                             </div>
                             <!-- Right Side - Picture  -->
-                            <div class="col-md-7 rounded upload d-flex justify-content-center" id="recipeImageUpload">
-                                <div>
-                                    <img src="{{ url_for('static', filename='images/foodupload.png') }}"
-                                        alt="Upload Your Recipe Photo">
-                                    <p class="text-center fw-bold">Upload a Picture</p>
+                            <div class="col-md-7 rounded d-flex justify-content-center">
+                                {% if recipe.photo_url %}
+                                <img src="{{ recipe.photo_url }}" alt="Picture of {{ recipe.title }}" id="recipe-pic"
+                                    class="w-100">
+                                {% else %}
+                                <img src="{{ url_for('static', filename='images/talamh_bia.png') }}"
+                                    alt="Picture of {{ recipe.title }}" class="w-100">
 
-                                    <!-- Found on http://bit.ly/upload-file-jQuery -->
-                                    <input id="fileinput" type="file" name="fileinput" style="display:none" />
-                                </div>
+                                {% endif %}
                             </div>
                         </div>
                         <hr class="mt-3">

@@ -38,9 +38,18 @@ a:hover{
 .btn-red {
     background-color: #c55e40 !important;
 }
-#recipe-new-image{
+#recipe-new-image {
     max-height: 300px;
     object-fit: cover;
+}
+.recipe-picture {
+    max-height: 300px;
+    object-fit: cover !important;
+}
+
+#recipe-pic {
+    max-height: 425px;
+    object-fit: cover !important;
 }
 
 .fa-pen-square{

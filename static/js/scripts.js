@@ -40,21 +40,27 @@ $(document).on('click', '#removeStepGroup', function () {
     steps--
 });
 
-// Upload images by clicking on div - Found on http://bit.ly/upload-file-jQuery
+// open modal on clicking div - Found on http://bit.ly/upload-file-jQuery
 $(document).on('click', '#recipeImageUpload', function () {
     $('#openmodal').trigger('click');
 });
 
-$(document).on('hide.bs.modal', '#myModal', function (e) {
-    alert('event fired')
+$(document).ready(function () {
+    if (document.location.pathname.indexOf("/edit_recipe/") == 0) {
+        var new_pic = $("#floatingInputValue").val();
+        $('#recipe-new-image').attr('src', new_pic);
+    }
+
 });
 
+// assigns new img input value to <img> src
 $(document).ready(function () {
     $(document).on('hide.bs.modal', '#myModal', function () {
         var new_pic = $("#floatingInputValue").val();
         $('#recipe-new-image').attr('src', new_pic);
     });
 });
+
 
 
 

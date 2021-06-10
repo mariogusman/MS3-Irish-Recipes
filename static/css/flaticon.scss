@@ -2,11 +2,11 @@ $flaticon-font: "flaticon";
 
 @font-face {
     font-family: $flaticon-font;
-    src: url("./flaticon.ttf?6cb4f75ba52bfe35616d284a5690ed5e") format("truetype"),
-url("./flaticon.woff?6cb4f75ba52bfe35616d284a5690ed5e") format("woff"),
-url("./flaticon.woff2?6cb4f75ba52bfe35616d284a5690ed5e") format("woff2"),
-url("./flaticon.eot?6cb4f75ba52bfe35616d284a5690ed5e#iefix") format("embedded-opentype"),
-url("./flaticon.svg?6cb4f75ba52bfe35616d284a5690ed5e#flaticon") format("svg");
+    src: url("./flaticon.ttf?1e2afbd63d8d30cd481f7f9ebe7722e4") format("truetype"),
+url("./flaticon.woff?1e2afbd63d8d30cd481f7f9ebe7722e4") format("woff"),
+url("./flaticon.woff2?1e2afbd63d8d30cd481f7f9ebe7722e4") format("woff2"),
+url("./flaticon.eot?1e2afbd63d8d30cd481f7f9ebe7722e4#iefix") format("embedded-opentype"),
+url("./flaticon.svg?1e2afbd63d8d30cd481f7f9ebe7722e4#flaticon") format("svg");
 }
 
 i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
@@ -31,6 +31,8 @@ $flaticon-map: (
     "chicken": "\f108",
     "diet": "\f109",
     "cabbage": "\f10a",
+    "triquetra": "\f10b",
+    "triquetra-1": "\f10c",
 );
 
 .flaticon-beef:before {
@@ -62,4 +64,10 @@ $flaticon-map: (
 }
 .flaticon-cabbage:before {
     content: map-get($flaticon-map, "cabbage");
+}
+.flaticon-triquetra:before {
+    content: map-get($flaticon-map, "triquetra");
+}
+.flaticon-triquetra-1:before {
+    content: map-get($flaticon-map, "triquetra-1");
 }

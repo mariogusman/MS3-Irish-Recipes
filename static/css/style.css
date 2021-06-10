@@ -38,6 +38,10 @@ a:hover{
 .btn-red {
     background-color: #c55e40 !important;
 }
+#recipe-new-image{
+    max-height: 300px;
+    object-fit: cover;
+}
 
 .fa-pen-square{
     color: #2d8a67;
@@ -150,7 +154,6 @@ select > .recipe-form {
 
 #logo {
     font-family: 'Sherwood', sans-serif;
-    /* font-family: 'Coustard', serif; */
     font-weight: 900;
     font-size: 250%;
     letter-spacing: 2px;
@@ -183,3 +186,4 @@ select > .recipe-form {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;}
+ 

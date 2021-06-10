@@ -74,17 +74,16 @@
                             </div>
 
                             <!-- Right Side - Picture  -->
-                            <div class="col-md-7 rounded upload d-flex justify-content-center" id="recipeImageUpload">
+                            <div class="col-md-7 rounded upload d-flex flex-row align-items-center justify-content-center"
+                                id="recipeImageUpload">
                                 <div>
                                     <img src="{{ url_for('static', filename='images/foodupload.png') }}"
-                                        alt="Upload Your Recipe Photo">
+                                        alt="Upload Your Recipe Photo" id="recipe-new-image" class="h-100 w-100">
+                                    <button type="button" class="d-none" id="openmodal" data-bs-toggle="modal"
+                                        data-bs-target="#myModal">Launch
+                                        modal</button>
                                     <p class="text-center fw-bold">Upload a Picture</p>
-
-                                    <!-- Found on http://bit.ly/upload-file-jQuery -->
-                                    <input id="fileinput" type="file" name="fileinput" style="display:none" />
                                 </div>
-
-
                             </div>
                             <hr class="mt-3">
 
@@ -170,6 +169,33 @@
                             </button>
                         </div>
 
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Picture Upload</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>You can paste the link to an image below. If you don't have the link to an image,
+                                        please upload it to
+                                        a website such as <a href="https://imgur.com/upload" target="_blank"
+                                            rel="noopener noreferrer">Imgur</a>.</p>
+                                    <div class="form-floating">
+                                        <input type="url" name="photo_url" class="form-control" id="floatingInputValue"
+                                            placeholder="Eg. imgur.com/TNCV3fJ" value="{{ recipe.photo_url }}">
+                                        <label for="floatingInputValue">Insert URL here. (Eg. imgur.com/TNCV3fJ)</label>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Done</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
 

@@ -37,7 +37,6 @@ $(document).on('click', '#removeingredientGroup', function () {
 // remove step row from : https://shouts.dev/add-or-remove-input-fields-dynamically-using-jquery#step1 
 $(document).on('click', '#removeStepGroup', function () {
     $(this).closest('#stepGroup').remove();
-    steps--
 });
 
 // open modal on clicking div - Found on http://bit.ly/upload-file-jQuery

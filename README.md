@@ -124,16 +124,20 @@ I used this [Shutterstock palette](https://www.shutterstock.com/color/irish-gree
 
 ### Testing
 ------
+#### Validators 
 - [W3 HTML](https://validator.w3.org/) - Used to Validate HTML.
     - After fixing the most proeminent issues, a few were left unresolved on purpose such as "Stray Divs" or "Unclosed Elements".
     - These were likely caused by the validator having trouble reading through Jinja code.
 - [W3 CSS](https://jigsaw.w3.org/css-validator/) - Used to Validate CSS.
     - No errors or warnings found.
 - [JS Hint](https://jshint.com/) - Used to Validate Javascript Code.
-    - No errors or warnings afound.
+    - No errors or warnings found.
+- [PEP8 Online](http://pep8online.com/) - Used to Validate Python code according to PEP8 Guidelines.
+    - Encountered a several "Line too long" errors that were fixed.
+    - After that, no further errors or warnings found.
 
-
-
+#### Manual Testing 
+- The deployed website was manually tested by myself on Chrome, Firefox, Opera, Edge and Internet Explorer.
 
 
 

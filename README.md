@@ -21,30 +21,28 @@ ___
 ### User stories
 ------
 
-<details>
-  <summary>Searching Recipes: </summary>
-  - I want to search for a specific recipe name using the search bar.
-  - I want to search for recipes that use one or more ingredients.
-  - I want to be able to browse and view all recipes under a certain category.  
-</details>  
+- Searching Recipes:
+    - I want to search for a specific recipe name using the search bar.
+    - I want to search for recipes that use one or more ingredients.
+    - I want to be able to browse and view all recipes under a certain category.  
+    
+<br>
 
-<details>
-  <summary>Publishing Recipes: </summary>
-  - I want to be able to create recipes.
-  - I want to create complex recipes with a large number of ingredients and/or instructions.
-  - I want to use my own pictures as a representation of the recipe.  
-</details>  
+- Publishing Recipes:
+    - I want to be able to create recipes.
+    - I want to create complex recipes with a large number of ingredients and/or instructions.
+    - I want to use my own pictures as a representation of the recipe.  
+    
+<br>
 
-<details>
-  <summary>User Control: </summary>
-  - I want to create an accout in order to share my recipes.
-  - I want my password to be secured and not easily leaked or stolen.
-  - Once registered, I want to be able to fully edit and tweak my published recipes.
-  - Once registered, I want to be able to delete my published recipes.
-  - As a registered user, I want to personalise my profile with my Social Media links.
-  - As a registered user, I want to edit or remove my Social Media links.
-</details>  
-
+- User Control:
+    - I want to create an accout in order to share my recipes.
+    - I want my password to be secured and not easily leaked or stolen.
+    - Once registered, I want to be able to fully edit and tweak my published recipes.
+    - Once registered, I want to be able to delete my published recipes.
+    - As a registered user, I want to personalise my profile with my Social Media links.
+    - As a registered user, I want to edit or remove my Social Media links.
+    
 <br>
 
 ### Website Layout
@@ -137,7 +135,24 @@ I used this [Shutterstock palette](https://www.shutterstock.com/color/irish-gree
     - After that, no further errors or warnings found.
 
 #### Manual Testing 
-- The deployed website was manually tested by myself on Chrome, Firefox, Opera, Edge and Internet Explorer.
+- The deployed website was manually tested by myself.
+- Testing consisted of general website usage, such as navigating through the navbar, clicking links and buttons, searching for recipes, creating accounts, editing profile social icons URL, publishing, editing and deleting recipes.
+
+    - Desktop: Chrome, Firefox, Opera, Edge and Internet Explorer.
+        - Only Internet Explorer presented issues: Though functionality was preserved, the layout was broken and design was heavily impacted, giving the aspec of an unfinished website.
+        - I decided to leave this as is given that IE users represent only around 1% of all internet users as of May 2021. 
+        - Source: [Statcounter](https://gs.statcounter.com/browser-market-share/desktop/worldwide).
+
+    - Mobile: Android(Chrome) and iOS(Chrome and Safari) devices were used for testing.
+        - For Android testing, a Galaxy A90 (6.7 inches, 1080x2400 pixels) was used.
+        - For iOS testing, an iPhone 6S (4.7 inches, 750x1334 pixels) was used.
+        - No issues found.
+
+    - Mobile simulations were also made using Chrome DevTools.
+        - Several screen sizes were used, for phones and tablets.
+        - The "Responsive" option was also used and confirmed that the website is fully responsible and adaptable.
+
+
 
 
 

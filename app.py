@@ -1,7 +1,8 @@
 import os
 from types import MethodDescriptorType
 from dns.query import receive_udp
-from flask import Flask, flash, render_template, redirect, request, session, url_for
+from flask import Flask, flash, render_template
+from flask import redirect, request, session, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -52,7 +53,8 @@ def search():
     Populates screen with results of query
     Query can come from index.html or the actual search page
     """
-    # defines empty variable, if empty an error message will be displayed on the results page
+    # defines empty variable,
+    # if empty an error message will be displayed on the results page
     query = ""
     result = ""
     cat_query = ""
@@ -67,7 +69,8 @@ def search():
     # will also search for the category in Recipes
     cat_query = request.form.get("cat-query")
     if cat_query:
-        cat_result = list(mongo.db.recipes.find({"$text": {"$search": cat_query}}))
+        cat_result = list(mongo.db.recipes.find(
+            {"$text": {"$search": cat_query}}))
 
     # renders search template
     return render_template("search.html", result=result, cat_result=cat_result)
@@ -120,7 +123,8 @@ def register():
         # display Flash message Success
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-        # redirects user to profile page where they can see their recipes and edit profile
+        # redirects user to profile page where
+        # they can see their recipes and edit profile
         return redirect(url_for("profile", username=session["user"]))
     # Renders register template
     return render_template("register.html")
@@ -139,7 +143,8 @@ def login():
 
         # if username exist in Users collection
         if existing_user:
-            # Checks if input password matches the one we have and put them in session
+            # Checks if input password matches the one we have
+            # and put them in session
             if check_password_hash(
                 existing_user["password"], request.form.get("password")
             ):
@@ -169,7 +174,8 @@ def profile(username):
     Alows user to view recipes written by user
     """
     # grab the session user's username from db
-    username = mongo.db.users.find_one({"username": session["user"]})["username"]
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
 
     # if user is logged in
     if session.get("user"):
@@ -180,7 +186,8 @@ def profile(username):
                 "user_instagram": request.form.get("user_instagram").lower(),
             }
             # pushes updated values to the users collection
-            mongo.db.users.update_one({"username": username}, {"$set": profile_update})
+            mongo.db.users.update_one({"username": username}, {
+                                      "$set": profile_update})
             # alerts users that profile was updated
             flash("Profile Successfully Updated!")
             # redirects user back to profile page
@@ -188,10 +195,14 @@ def profile(username):
 
         # Retrieve recipes/social links from db added by user
         user_social = mongo.db.users.find_one({"username": username})
-        recipes = list(mongo.db.recipes.find({"author": username}).sort("date", -1))
+        recipes = list(mongo.db.recipes.find(
+            {"author": username}).sort("date", -1))
         # renders profile template
         return render_template(
-            "profile.html", username=username, recipes=recipes, user_social=user_social
+            "profile.html",
+            username=username,
+            recipes=recipes,
+            user_social=user_social
         )
 
     # if user not logged in - redirects to login page
@@ -254,7 +265,8 @@ def edit_recipe(recipe_id):
                 "date": datetime.datetime.utcnow(),
                 "photo_url": request.form.get("photo_url"),
             }
-            mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, new_recipe_update)
+            mongo.db.recipes.update(
+                {"_id": ObjectId(recipe_id)}, new_recipe_update)
             # alerts users that recipe was published
             flash("Recipe Successfully Updated!")
             # redirects users to the profile page
@@ -289,4 +301,5 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=False)
+    app.run(host=os.environ.get("IP"), port=int(
+        os.environ.get("PORT")), debug=False)

@@ -17,7 +17,7 @@ The deployed website can be seen here:
 ___
 
 ## User Experience
-------
+
 ### User stories
 
 - Searching Recipes:
@@ -93,7 +93,7 @@ ___
 <br>
 
 ## MongoDB Structure
-------
+
 - Inside the database, only two collections were created, "users" and "recipes".
 - The image below is its visual representation and was created using [dbdiagram.io](http://dbdiagram.io/)
 - ![DBdiagram](https://i.imgur.com/Oq3JCro.jpg "Diagram showing DB Structure")
@@ -101,7 +101,7 @@ ___
 
 
 ## Technologies Used
-------
+
 ### Languages
 - [HTML5](https://whatwg.org/) - To create the main page's content structure.
 - [CSS 3](https://www.w3.org/TR/CSS/#css) - Used with HTML to style this website's content.
@@ -125,7 +125,7 @@ ___
 - [Am I Responsive](http://ami.responsivedesign.is/?url=http%3A%2F%2Fms3-keto-recipes.herokuapp.com%2Frecipes%2F60c3445a59caadfa8d633b29) - To generate the demo image for this project.
 
 ## Testing
-------
+
 ### Validators 
 - [W3 HTML](https://validator.w3.org/) - Used to Validate HTML.
     - After fixing the most proeminent issues, a few were left unresolved on purpose such as "Stray Divs" or "Unclosed Elements".
@@ -157,7 +157,7 @@ ___
         - The "Responsive" option was also used and confirmed that the website is fully responsible and adaptable.
 
 ## Deplyment
-------
+
 - The project was deployed to [Heroku](https://www.heroku.com/). As described on their website, "Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud".
 - The site was deployed from the Master branch of this GitHub repository using Heroku's "auto deployment" feature. This ensures that the website is always up-to-date with the master branch of the repository.
 
@@ -229,7 +229,7 @@ os.environ.setdefault("MONGO_DBNAME", "[UNIQUE ID]")  # This is your DBName foun
 - For major changes, please open an issue so we can discuss the proposed changes.
  
 ## Credits
-------
+
 ### Inspiration
 - [TudoGostoso](https://www.tudogostoso.com.br/): Largest Brazilian recipes website.
 - [Reciplate](https://reciplate.com/): A general purpose recipe website.
@@ -241,7 +241,7 @@ os.environ.setdefault("MONGO_DBNAME", "[UNIQUE ID]")  # This is your DBName foun
 - I strongly recommend you purchase this book by going to the [official website](https://www.aniarrestaurant.ie/the-irish-cookbook).
  
 ## Acknowledgements
-------
+
 - Thanks to Code Institute and all team members for the excellent content offered.
 - Thank to my mentor, Gerry McBride for sharing some of his valuable experience with me.
 - Thank you to my friend and team leader at work, Shanice McNally, for supporting me on this journey and coming up with the name for this project.
